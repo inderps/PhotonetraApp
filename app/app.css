@@ -1,0 +1,59 @@
+.content {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.shoot div{
+    display: inline-block;
+}
+.shoot .client-details {
+    margin-left: 20px;
+}
+
+.shoot .client-details .client-name{
+    line-height: 45px;
+}
+
+.shoot .right-arrow {
+    font-size: 40px;
+    line-height: 80px;
+    float: right;
+}
+
+.bottom-nav{
+    width: 100%;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+input[type='text'].form-control, select.form-control{
+    height: 50px;
+}
+
+textarea.form-control{
+    height: 100px;
+}
+
+.search-box{
+    padding: 10px;
+}
+
+nav.search-navbar{
+    top: 50px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    border-width: 0 0 1px;
+}
+
+.search-header{
+    padding: 10px;
+    width: 100%;
+}
+
+.containerWithSearchBar {
+    margin-top: 60px;
+}
