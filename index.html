@@ -19,7 +19,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <button type="button" class="btn btn-default navbar-btn"><span class="typcn typcn-backspace"></span></button>
+        <button type="button" id="backButton" class="btn btn-default navbar-btn"><span class="typcn typcn-backspace"></span></button>
     </div>
     <div class="collapse navbar-collapse navbar-ex6-collapse">
         <ul class="nav navbar-nav">
@@ -33,8 +33,8 @@
 </nav>
 <div class="row content">
     <div class="col-md-12">
-        <div id="shootsContainer"></div>
-        <div id="newShootContainer"></div>
+        <div id="shootsContainer" class="page"></div>
+        <div id="viewShootContainer" class="page"></div>
     </div>
 </div>
 
@@ -53,7 +53,7 @@
 </script>
 
 <script id="shootsUpcomingView"  type="text/mustache">
-    <a href="#" class="list-group-item shoot">
+    <a href="#shoots/123/show" class="list-group-item shoot">
         <div class="date text-center">
             <h1><span class="label label-info">29</span></h1>
             <h4>September</h4>
@@ -171,10 +171,104 @@
         </div>
     </nav>
 </script>
+
+<script id="viewShootView"  type="text/mustache">
+    <div>
+        <div class="text-center">
+            <h2 class="text-primary"><span class="typcn typcn-calender"></span> 29 September 2013</h2>
+            <h4 class="text-muted">Wedding Ceremony</h4>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Location
+                    <span class="typcn typcn-pencil pull-right"></span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Client Info</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Notes</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Delivery Date</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Charges</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Payments
+                    <span class="typcn typcn-plus pull-right"></span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/canjs/can.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="app/models/test.js"></script>
+<script src="app/controllers/viewShootControl.js"></script>
 <script src="app/controllers/shootsControl.js"></script>
 <script src="app/controllers/routingControl.js"></script>
 <script src="app/app.js"></script>

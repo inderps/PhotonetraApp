@@ -16,6 +16,8 @@ var ShootsControl = can.Control({
 
             var shootsFooterViewTemplate = can.view("#shootsFooterView");
             this.element.append(shootsFooterViewTemplate);
+
+            this.element.show();
 //            Test.findAll(function (data) {
 //              console.log(data);
 //            });
@@ -26,6 +28,7 @@ var ShootsControl = can.Control({
             this.element.html(template);
             var template = can.view("#shootsFooterView");
             this.element.append(template);
+            this.element.show();
 //            Test.findAll(function (data) {
 //              console.log(data);
 //            });
