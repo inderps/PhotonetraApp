@@ -18,9 +18,9 @@ var ShootsControl = can.Control({
             this.element.append(shootsFooterViewTemplate);
 
             this.element.show();
-//            Test.findAll(function (data) {
-//              console.log(data);
-//            });
+            Test.data(function (data) {
+              console.log(data);
+            });
         },
 
         new: function(){
