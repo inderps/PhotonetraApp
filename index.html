@@ -5,11 +5,30 @@
 <meta name="description" content="" />
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="lib/sidr/jquery.sidr.dark.css" rel="stylesheet">
+<link href="app/app.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+    <a id="menu" href="#menu-list"></a>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    </div><!-- /.navbar-collapse -->
+</nav>
 
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/bootstrap.min.js"></script>
-    <script src="lib/canjs/can.jquery.min.js"></script>
+<div id="menu-list" style="display: none;">
+    <ul>
+        <li><a href="#">Shoots</a></li>
+        <li class="active"><a href="#">Clients</a></li>
+        <li><a href="#">Delivery</a></li>
+        <li><a href="#">Payments</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+</div>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/canjs/can.jquery.min.js"></script>
+<script src="lib/sidr/jquery.sidr.min.js"></script>
+<script src="app/app.js"></script>
 </body>
 </html>
