@@ -100,7 +100,7 @@
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
             <div class="btn-group btn-group-justified">
-                <a href="#shoots/new" class="btn btn-default"><span class="icon-plus"></span></a>
+                <a href="#contacts/choose" class="btn btn-default"><span class="icon-plus"></span></a>
                 <a href="#shoots/upcoming" class="btn btn-default"><span class="icon-search"></span></a>
                 <a href="#shoots/all" class="btn btn-default"><span class="icon-filter"></span></a>
             </div>
@@ -154,34 +154,80 @@
     </form>
 </script>
 
-<script id="signup-view"  type="text/mustache">
+<script id="new-shoot-view"  type="text/mustache">
     <form role="form">
         <div class="form-group">
-            <label for="studio-name">Studio Name</label>
-            <input type="text" class="form-control" id="studio-name" placeholder="Enter Studio Name">
+            <label for="shoot-type">Shoot Type</label>
+            <select class="form-control" id="shoot-type">
+                <option>Wedding</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="shoot-date">Shoot Date</label>
+            <input type="text" class="form-control" id="shoot-date" placeholder="Enter Shoot Date">
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" placeholder="Enter email">
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="confirm-password">Confirm Password</label>
-            <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password">
-        </div>
-        <button type="submit" class="btn btn-info">Create Account</button>
+        <button type="submit" class="btn btn-success submit">Book</button>
     </form>
 </script>
 
+<script id="signup-view"  type="text/mustache">
+    <form role="form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Enter your Name">
+        </div>
+        <div class="form-group">
+            <label for="studio_name">Studio Name</label>
+            <input type="text" class="form-control input-lg" id="studio_name" name="studio_name" placeholder="Enter Studio Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control input-lg" id="email" name="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone No</label>
+            <input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="Enter Studio Name">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" class="form-control input-lg" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+        </div>
+        <button type="submit" class="btn btn-success submit btn-lg">Create Account</button>
+    </form>
+</script>
+
+<div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <span class="message"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery.serializeJSON.js"></script>
+<script src="lib/crossdomain/crossdomain.js"></script>
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/canjs/can.jquery.min.js"></script>
 <script src="lib/sidr/jquery.sidr.min.js"></script>
+<script src="app/components/host.js"></script>
 <script src="app/commons/loader.js"></script>
 <script src="app/commons/footer.js"></script>
+<script src="app/commons/messageModal.js"></script>
+<script src="app/models/photographer.js"></script>
 <script src="app/signupCtrl.js"></script>
 <script src="app/contactsCtrl.js"></script>
 <script src="app/shootsCtrl.js"></script>
