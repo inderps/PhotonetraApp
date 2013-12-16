@@ -6,15 +6,14 @@ var SignupCtrl = can.Control.extend({
 
         var signupView = can.view("#signup-view");
         this.element.html(signupView);
-//
-//        var shootListView = can.view("#shoot-list-view", [{
-//            id: "1",
-//            shoot_date: "July 27, 2013",
-//            shoot_time: "1:00 PM",
-//            client_name: "Manjeet Singh",
-//            shoot_type: "Wedding Shoots"
-//        }]);
-//        this.element.find(".shoots").append(shootListView);
-//        Footer.create(this.element, "#shoots-footer");
+    },
+
+    ".submit click": function (el, ev) {
+        ev.preventDefault();
+        var formData = this.element.find("form").serializeJSON();
+        delete formData["confirm_password"]
+        Photographer.create(formData, function(data){
+            MessageModal.show("Your account is created successfully", "#signup");
+        });
     }
 });

@@ -20,10 +20,16 @@ var RoutingCtrl = can.Control.extend({
         this.options.shootsCtrl = new ShootsCtrl("#shoots-page");
     },
 
-    "shoots/new route" : function() {
+    "contacts/choose route" : function() {
         Loader.start();
         $("#page").html("<div id='choose-contact-page'></div>")
         this.options.chooseContactCtrl = new ChooseContactCtrl("#choose-contact-page");
+    },
+
+    "contacts/:id/shoots/new route" : function(data) {
+        Loader.start();
+        $("#page").html("<div id='new-shoot-page'></div>")
+        this.options.newShootCtrl = new NewShootCtrl("#new-shoot-page");
     },
 
     "contacts route" : function() {

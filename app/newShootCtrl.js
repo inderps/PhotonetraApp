@@ -1,11 +1,10 @@
 var NewShootCtrl = can.Control.extend({
     init: function( element, options ) {
-        $(".title").html("Sign Up");
-        $("#back").hide();
-        $("#menu").hide();
+        $(".title").html("Create New Shoot");
+        $("#back").show();
 
-        var signupView = can.view("#signup-view");
-        this.element.html(signupView);
+        var newShootView = can.view("#new-shoot-view");
+        this.element.html(newShootView);
 //
 //        var shootListView = can.view("#shoot-list-view", [{
 //            id: "1",

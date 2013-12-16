@@ -38,7 +38,7 @@ button {
 }
 
 .submit{
-     margin-top: 10px;
+     margin-top: 20px;
 }
 
 #choose-contact-page .or{
@@ -48,3 +48,7 @@ button {
 form h2{
     margin-bottom: 25px;
 }
+
+/*button, input, select, textarea {*/
+    /*height: 45px;*/
+/*}*/
