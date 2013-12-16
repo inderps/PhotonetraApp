@@ -49,6 +49,34 @@ form h2{
     margin-bottom: 25px;
 }
 
+.no-pointer-events{
+    pointer-events: none;
+}
+
+#wait-loader-backdrop{
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.8);
+    background-image: radial-gradient(center, ellipse cover, lighten($main, 5) 0%, darken($main, 5) 100%);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+#wait-loader-backdrop .spinner-new {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    background-image: url("/img/spinner.gif");
+}
+
 /*button, input, select, textarea {*/
     /*height: 45px;*/
 /*}*/
