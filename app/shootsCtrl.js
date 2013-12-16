@@ -1,5 +1,8 @@
 var ShootsCtrl = can.Control.extend({
     init: function( element, options ) {
+        $(".title").html("Shoots");
+        $("#back").hide();
+
         var shootsView = can.view("#shoots-view");
         this.element.html(shootsView);
 
@@ -11,5 +14,6 @@ var ShootsCtrl = can.Control.extend({
             shoot_type: "Wedding Shoots"
         }]);
         this.element.find(".shoots").append(shootListView);
+        Footer.create(this.element, "#shoots-footer");
     }
 });

@@ -1,3 +1,13 @@
+.title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    display: inline-block;
+    text-align: center;
+    width: 90%;
+    position: absolute;
+}
+
 #menu{
     background: url("/img/open.png") center center no-repeat;
     display: block;
@@ -10,9 +20,31 @@
 }
 
 #back{
+    float: left;
     margin-left: 10px;
+    width: 50px;
 }
 
 #page{
     padding: 10px;
+}
+
+button {
+    width: 100%;
+}
+
+#signup-page, #choose-contact-page{
+    padding: 10px;
+}
+
+.submit{
+     margin-top: 10px;
+}
+
+#choose-contact-page .or{
+    text-align: center;
+}
+
+form h2{
+    margin-bottom: 25px;
 }

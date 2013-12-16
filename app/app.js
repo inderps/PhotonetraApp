@@ -6,7 +6,7 @@ $(function(){
 
 var Photonetra = can.Construct.extend({
     init: function() {
-        $('#menu').sidr({source: '#menu-list', side: 'right'});
+        $('#menu').sidr({name: 'main-menu', source: '#menu-list', side: 'right'});
         new RoutingCtrl("body");
     }
 });
