@@ -6,6 +6,7 @@ var SignupCtrl = can.Control.extend({
 
         var signupView = can.view("#signup-view");
         this.element.html(signupView);
+        Loader.stop();
     },
 
     ".submit click": function (el, ev) {

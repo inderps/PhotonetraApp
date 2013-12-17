@@ -15,5 +15,6 @@ var ShootsCtrl = can.Control.extend({
         }]);
         this.element.find(".shoots").append(shootListView);
         Footer.create(this.element, "#shoots-footer");
+        Loader.stop();
     }
 });

@@ -5,5 +5,6 @@ var ChooseContactCtrl = can.Control.extend({
 
         var selectContactView = can.view("#select-contact-view");
         this.element.html(selectContactView);
+        Loader.stop();
     }
 });
