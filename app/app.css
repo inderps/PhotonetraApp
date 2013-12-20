@@ -1,59 +1,81 @@
-.content {
-    margin-top: 60px;
-    margin-bottom: 60px;
-}
-
-.shoot div{
+.title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
     display: inline-block;
-}
-.shoot .client-details {
-    margin-left: 20px;
-}
-
-.shoot .client-details .client-name{
-    line-height: 45px;
+    text-align: center;
+    width: 90%;
+    position: absolute;
 }
 
-.shoot .right-arrow {
-    font-size: 40px;
-    line-height: 80px;
-    float: right;
-}
-
-.bottom-nav{
-    width: 100%;
-}
-
-.btn-full {
-    width: 100%;
-}
-
-input[type='text'].form-control, select.form-control{
+#menu{
+    background: url("/img/open.png") center center no-repeat;
+    display: block;
+    width: 50px;
     height: 50px;
+    float: right;
+    color: #ffffff;
+    border: none;
+    padding: 0;
 }
 
-textarea.form-control{
-    height: 100px;
+#back{
+    float: left;
+    margin-left: 10px;
+    width: 50px;
 }
 
-.search-box{
+#page{
     padding: 10px;
 }
 
-nav.search-navbar{
-    top: 50px;
-    position: fixed;
-    right: 0;
-    left: 0;
-    z-index: 1;
-    border-width: 0 0 1px;
-}
-
-.search-header{
-    padding: 10px;
+button {
     width: 100%;
 }
 
-.containerWithSearchBar {
-    margin-top: 60px;
+#signup-page, #choose-contact-page{
+    padding: 10px;
 }
+
+.submit{
+     margin-top: 20px;
+}
+
+#choose-contact-page .or{
+    text-align: center;
+}
+
+form h2{
+    margin-bottom: 25px;
+}
+
+.no-pointer-events{
+    pointer-events: none;
+}
+
+#wait-loader-backdrop{
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.8);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+#wait-loader-backdrop .spinner-new {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    background-image: url("/img/spinner.gif");
+}
+
+/*button, input, select, textarea {*/
+    /*height: 45px;*/
+/*}*/

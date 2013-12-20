@@ -4,8 +4,11 @@ $(function(){
 
 });
 
-can.Construct("Photonetra", {
+var Photonetra = can.Construct.extend({
     init: function() {
-        new RoutingControl("body");
+        window.photographerId = 1;
+        MessageModal.init();
+        $('#menu').sidr({name: 'main-menu', source: '#menu-list', side: 'right'});
+        new RoutingCtrl("body");
     }
 });
