@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Photonetra</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/font/typicons.css" rel="stylesheet">
+    <link href="app/app.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex6-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <button type="button" id="backButton" class="btn btn-default navbar-btn"><span class="typcn typcn-backspace"></span></button>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex6-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Clients</a></li>
+            <li><a href="#">Shoots</a></li>
+            <li><a href="#">Delivery</a></li>
+            <li><a href="#">Payments</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<div class="row content">
+    <div class="col-md-12">
+        <div id="shootsContainer" class="page"></div>
+        <div id="viewShootContainer" class="page"></div>
+    </div>
+</div>
+
+<script id="listView"  type="text/mustache">
+    <nav class="navbar search-navbar" role="navigation">
+        <div class="navbar-header search-header">
+            <input type="search" class="form-control" placeholder="Search">
+        </div>
+    </nav>
+    <div class="row containerWithSearchBar">
+        <div class="col-md-12">
+            <div class="list-group list" id="list">
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="shootsUpcomingView"  type="text/mustache">
+    <a href="#shoots/123/show" class="list-group-item shoot">
+        <div class="date text-center">
+            <h1><span class="label label-info">29</span></h1>
+            <h4>September</h4>
+        </div>
+        <div class="client-details">
+            <h3 class="text-info client-name">Ranjeet Singh</h3>
+            <small class="text-muted">WEDDING CEREMONY</small>
+        </div>
+        <span class="typcn typcn-chevron-right right-arrow"></span>
+    </a>
+</script>
+
+
+<script id="clientSelectView"  type="text/mustache">
+    <a href="#" class="list-group-item shoot">
+        <h3 class="list-group-item-heading"><span class="text-info">Manjeet Singh</span></h3>
+        <p class="list-group-item-text">
+            <h5><span class="typcn typcn-phone"></span> +91-8800991034</h5>
+            <h5><span class="typcn typcn-mail"></span> raja.gopalchari@gmail.com</h5>
+        </p>
+    </a>
+
+    <a href="#" class="list-group-item shoot">
+        <h3 class="list-group-item-heading"><span class="text-info">Manjeet Singh</span></h3>
+        <p class="list-group-item-text">
+        <h5><span class="typcn typcn-phone"></span> +91-8800991034</h5>
+        <h5><span class="typcn typcn-mail"></span> raja.gopalchari@gmail.com</h5>
+        </p>
+    </a>
+
+    <a href="#" class="list-group-item shoot">
+        <h3 class="list-group-item-heading"><span class="text-info">Manjeet Singh</span></h3>
+        <p class="list-group-item-text">
+        <h5><span class="typcn typcn-phone"></span> +91-8800991034</h5>
+        <h5><span class="typcn typcn-mail"></span> raja.gopalchari@gmail.com</h5>
+        </p>
+    </a>
+</script>
+
+<script id="shootsNewView"  type="text/mustache">
+    <div class="row">
+        <div class="col-md-12">
+            <form role="form">
+                <div id="page1">
+                    <fieldset>
+                        <legend>Client Information</legend>
+                        <div class="form-group text-center">
+                            <button class="btn btn-info btn-lg btn-full" id="existingClientButton">Existing Client</button>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <label>OR</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="clientName" placeholder="Client Name" name="clientName">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="clientPhone" placeholder="Client Phone No" name="clientPhone">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="clientEmail" placeholder="Client Email" name="clientEmail">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="clientAddress" placeholder="Client Address" name="clientAddress"></textarea>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary btn-lg btn-full">Next</button>
+                        </div>
+                    </fieldset>
+                </div>
+                <div id="page2" class="hide">
+                    <fieldset>
+                        <legend>Shoot Details</legend>
+                        <div class="form-group">
+                            <select class="form-control" id="shootType" name="shootType">
+                                <option value="wedding">Select Shoot type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="potrait">Potrait</option>
+                                <option value="wedding">Modelling</option>
+                                <option value="wedding">Nature</option>
+                                <option value="wedding">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="shootDate" placeholder="Shoot Date" name="shootDate">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="shootLocation" placeholder="Shoot Location" name="shootLocation"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="deliveryDate" placeholder="Tentative Delivery Date" name="deliveryDate">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="shootingCharges" placeholder="Charges" name="shootingCharges">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="notes" placeholder="Notes" name="notes"></textarea>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-success btn-lg btn-full">Create</button>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>
+
+<script id="shootsFooterView"  type="text/mustache">
+    <nav class="navbar navbar-fixed-bottom" role="navigation">
+        <div class="navbar-header text-center bottom-nav">
+            <a href="#shoots/upcoming" class="btn btn-default navbar-btn">Upcoming Shoots</a>
+            <a href="#shoots/all" class="btn btn-default navbar-btn">All Shoots</a>
+            <a href="#shoots/new" class="btn btn-default navbar-btn">Add New</a>
+        </div>
+    </nav>
+</script>
+
+<script id="viewShootView"  type="text/mustache">
+    <div>
+        <div class="text-center">
+            <h2 class="text-primary"><span class="typcn typcn-calender"></span> 29 September 2013</h2>
+            <h4 class="text-muted">Wedding Ceremony</h4>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Location
+                    <span class="typcn typcn-pencil pull-right"></span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Client Info</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Notes</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Delivery Date</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Charges</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Payments
+                    <span class="typcn typcn-plus pull-right"></span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/jquery/crossdomain.js"></script>
+<script src="lib/canjs/can.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="app/models/test.js"></script>
+<script src="app/controllers/viewShootControl.js"></script>
+<script src="app/controllers/shootsControl.js"></script>
+<script src="app/controllers/routingControl.js"></script>
+<script src="app/app.js"></script>
+</body>
+</html>
