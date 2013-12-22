@@ -20,10 +20,22 @@ var RoutingCtrl = can.Control.extend({
         this.options.shootsCtrl = new ShootsCtrl("#shoots-page");
     },
 
+    "contacts route" : function() {
+        Loader.start();
+        $("#page").html("<div id='contacts-page'></div>")
+        this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all"});
+    },
+
     "contacts/new route" : function() {
         Loader.start();
         $("#page").html("<div id='new-contact-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#new-contact-page", {type: "new"});
+    },
+
+    "contacts/:id/show route" : function(data) {
+        Loader.start();
+        $("#page").html("<div id='contact-show-page'></div>")
+        this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "show", id: data.id});
     },
 
     "contacts/choose route" : function() {
@@ -32,22 +44,16 @@ var RoutingCtrl = can.Control.extend({
         this.options.chooseContactCtrl = new ChooseContactCtrl("#choose-contact-page");
     },
 
-    "contacts/:id/show route" : function(data) {
-        Loader.start();
-        $("#page").html("<div id='contact-show-page'></div>")
-        this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "view", id: data.id});
-    },
-
     "contacts/:id/shoots/new route" : function(data) {
         Loader.start();
         $("#page").html("<div id='new-shoot-page'></div>")
-        this.options.newShootCtrl = new NewShootCtrl("#new-shoot-page");
+        this.options.shootsCtrl = new ShootsCtrl("#new-shoot-page", {type: "new", contact_id: data.id});
     },
 
-    "contacts route" : function() {
+    "shoots/:id/show  route" : function(data) {
         Loader.start();
-        $("#page").html("<div id='contacts-page'></div>")
-        this.options.contactsCtrl = new ContactsCtrl("#contacts-page");
+        $("#page").html("<div id='shoot-show-page'></div>")
+        this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },
 
     "shoots/upcoming route" : function() {

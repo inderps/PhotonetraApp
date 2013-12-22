@@ -11,8 +11,8 @@
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
-    <button type="button" id="back" class="btn btn-default navbar-btn"><span class="icon-left"></span></button>
     <span class="title">Shoots</span>
+    <button type="button" id="back" class="btn btn-default navbar-btn"><span class="icon-left"></span></button>
     <a id="menu" href="#menu-list"></a>
 </nav>
 
@@ -165,23 +165,38 @@
     </form>
 </script>
 
-<script id="new-shoot-view"  type="text/mustache">
+<script id="shoot-form-view"  type="text/mustache">
     <form role="form">
         <div class="form-group">
             <label for="shoot-type">Shoot Type</label>
-            <select class="form-control" id="shoot-type">
-                <option>Wedding</option>
+            <select class="form-control input-lg" id="shoot-type" can-value="shoot_type">
+                <option value="wedding">Wedding</option>
             </select>
         </div>
         <div class="form-group">
             <label for="shoot-date">Shoot Date</label>
-            <input type="text" class="form-control" id="shoot-date" placeholder="Enter Shoot Date">
+            <input type="text" class="form-control input-lg" id="shoot-date" can-value="shoot_date" placeholder="Enter Shoot Date">
         </div>
         <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <label for="shoot-time">Shoot Time</label>
+            <input type="text" class="form-control input-lg" id="shoot-time" can-value="shoot_time" placeholder="Enter Shoot Time">
         </div>
-        <button type="submit" class="btn btn-success submit">Book</button>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control input-lg" id="location" can-value="location" placeholder="Enter location">
+        </div>
+        <div class="form-group">
+            <label for="delivery-date">Delivery Date</label>
+            <input type="text" class="form-control input-lg" id="delivery-date" can-value="delivery_date" placeholder="Enter Delivery date">
+        </div>
+        <div class="form-group">
+            <label for="charges">Charges</label>
+            <input type="number" class="form-control input-lg" id="charges" can-value="charges" placeholder="Enter Charges">
+        </div>
+        <div class="form-group">
+            <label for="notes">Notes (optional)</label>
+            <textarea class="form-control input-lg" id="notes" can-value="notes" placeholder="Enter Notes (optional)"></textarea>
+        </div>
     </form>
 </script>
 
@@ -200,6 +215,118 @@
             <input type="email" class="form-control input-lg" id="email" can-value="email" placeholder="Enter email">
         </div>
     </form>
+</script>
+
+<script id="contact-view"  type="text/mustache">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Phone No</h3>
+        </div>
+        <div class="panel-body">
+            <a href="tel:{{phone}}"><h4>{{phone}}</h4></a>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Email</h3>
+        </div>
+        <div class="panel-body">
+            <h4>{{email}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="#contacts/{{id}}/shoots/new" class="btn btn-info">Add New Shoot</a>
+        </div>
+    </div>
+</script>
+
+
+
+<script id="contact-footer"  type="text/mustache">
+    <nav class="navbar navbar-fixed-bottom footer" role="navigation">
+        <div class="navbar-header text-center bottom-nav">
+            <div class="btn-group btn-group-justified">
+                <a href="#contacts/new" class="btn btn-default">Edit</a>
+            </div>
+        </div>
+    </nav>
+</script>
+
+<script id="shoot-view"  type="text/mustache">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Contact</h3>
+        </div>
+        <div class="panel-body">
+            <h4>{{name}}</h4>
+            <h5>{{email}}</h5>
+            <a href="tel:{{phone}}"><h4>{{phone}}</h4></a>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Shooting Date & Time</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{shoot_date}} at {{shoot_time}}</p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Location</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{location}}</p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Delivery Date</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{delivery_date}}</p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Notes</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{notes}}</p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Charges</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{charges}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="#contacts/{{id}}/shoots/new" class="btn btn-info">Add New Shoot</a>
+        </div>
+    </div>
+</script>
+
+
+
+<script id="shoot-footer"  type="text/mustache">
+    <nav class="navbar navbar-fixed-bottom footer" role="navigation">
+        <div class="navbar-header text-center bottom-nav">
+            <div class="btn-group btn-group-justified">
+                <a href="#contacts/new" class="btn btn-default">Edit</a>
+            </div>
+        </div>
+    </nav>
 </script>
 
 <script id="signup-view"  type="text/mustache">
@@ -257,6 +384,7 @@
 <script src="app/commons/messageModal.js"></script>
 <script src="app/models/photographer.js"></script>
 <script src="app/models/contact.js"></script>
+<script src="app/models/shoot.js"></script>
 <script src="app/signupCtrl.js"></script>
 <script src="app/contactsCtrl.js"></script>
 <script src="app/shootsCtrl.js"></script>

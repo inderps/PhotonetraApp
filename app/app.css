@@ -1,10 +1,10 @@
 .title{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 16px;
     display: inline-block;
     text-align: center;
-    width: 90%;
+    width: 100%;
     position: absolute;
 }
 
@@ -26,15 +26,11 @@
 }
 
 #page{
-    padding: 10px;
+    padding: 20px;
 }
 
 button {
     width: 100%;
-}
-
-#signup-page, #choose-contact-page{
-    padding: 10px;
 }
 
 .submit{

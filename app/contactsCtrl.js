@@ -3,7 +3,12 @@ var ContactsCtrl = can.Control.extend({
         if(options.type == "new"){
             this.new();
         }
-        Loader.stop();
+        else if(options.type == "all"){
+            this.all();
+        }
+        else if(options.type == "show"){
+            this.show(options.id);
+        }
 
 //        $(".title").html("Contacts");
 //        $("#back").hide();
@@ -12,6 +17,31 @@ var ContactsCtrl = can.Control.extend({
 //        this.element.html(contactsView);
 //        Footer.create(this.element, "#contacts-footer");
 //        Loader.stop();
+    },
+
+    show: function(id){
+        var _this = this;
+        Contact.findOne({id: id}, function(contact){
+            $(".title").html(contact.name);
+            $("#back").show();
+
+            var contactView = can.view("#contact-view", contact);
+            _this.element.html(contactView);
+            Footer.create(_this.element, "#contact-footer");
+            Loader.stop();
+        });
+    },
+
+    all: function(){
+        $(".title").html("Contacts");
+        $("#back").hide();
+
+        var contactsView = can.view("#contacts-view");
+        this.element.html(contactsView);
+
+        Footer.create(this.element, "#contacts-footer");
+
+        Loader.stop();
     },
 
     new: function(){

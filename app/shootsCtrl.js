@@ -1,20 +1,67 @@
 var ShootsCtrl = can.Control.extend({
     init: function( element, options ) {
-        $(".title").html("Shoots");
-        $("#back").hide();
+        if(options.type == "new"){
+            this.new(options.contact_id);
+        }
+        else if(options.type == "show"){
+            this.show(options.id);
+        }
+//        $(".title").html("Shoots");
+//        $("#back").hide();
+//
+//        var shootsView = can.view("#shoots-view");
+//        this.element.html(shootsView);
+//
+//        var shootListView = can.view("#shoot-list-view", [{
+//            id: "1",
+//            shoot_date: "July 27, 2013",
+//            shoot_time: "1:00 PM",
+//            client_name: "Manjeet Singh",
+//            shoot_type: "Wedding Shoots"
+//        }]);
+//        this.element.find(".shoots").append(shootListView);
+//        Footer.create(this.element, "#shoots-footer");
+    },
 
-        var shootsView = can.view("#shoots-view");
-        this.element.html(shootsView);
+    show: function(id) {
+        var _this = this;
+        Shoot.findOne({id: id}, function(shoot){
+            $(".title").html(shoot.shoot_type);
+            $("#back").show();
 
-        var shootListView = can.view("#shoot-list-view", [{
-            id: "1",
-            shoot_date: "July 27, 2013",
-            shoot_time: "1:00 PM",
-            client_name: "Manjeet Singh",
-            shoot_type: "Wedding Shoots"
-        }]);
-        this.element.find(".shoots").append(shootListView);
-        Footer.create(this.element, "#shoots-footer");
+            var shootView = can.view("#shoot-view", shoot);
+            _this.element.html(shootView);
+            Footer.create(_this.element, "#shoot-footer");
+            Loader.stop();
+        });
+    },
+
+    new: function(contactId) {
+        $(".title").html("Create New Shoot");
+        $("#back").show();
+
+        this.shoot = new can.Map({
+            contact_id: contactId,
+            shoot_type: "wedding",
+            shoot_date: "",
+            shoot_time: "",
+            location: "",
+            delivery_date: "",
+            charges: "",
+            notes: ""
+        });
+
+        var shootForm = can.view("#shoot-form-view", this.shoot);
+        this.element.html(shootForm);
+        this.element.find("form").append("<button id='create-shoot' class='btn btn-success btn-lg submit'>Create</button>")
         Loader.stop();
+    },
+
+    "#create-shoot click": function(el, ev){
+        ev.preventDefault();
+
+        Shoot.create(this.shoot.attr(), function(response){
+            MessageModal.show("New shoot created successfully", "#shoots/" + response.id + "/show");
+        });
     }
 });
