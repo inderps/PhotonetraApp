@@ -23,12 +23,11 @@
 <!--</nav>-->
 
 <div id="page">
-
 </div>
 
 <div id="menu-list" style="display: none;">
     <ul>
-        <li><a href="#shoots">Shoots</a></li>
+        <li><a href="#shoots/upcoming">Shoots</a></li>
         <li><a href="#contacts">Clients</a></li>
         <li><a href="#">Delivery</a></li>
         <li><a href="#">Payments</a></li>
@@ -38,62 +37,16 @@
 
 <script id="shoots-view"  type="text/mustache">
     <ul class="list-group shoots">
-        <li class="list-group-item">
+        {{#shoots}}
+        <li class="list-group-item" data-href="#shoots/{{id}}/show">
             <p class="text-left">
-            <h4>SEPT 23, 2013</h4>
-            <span class="client-name">Baljinder Singh <br/></span>
-            <small class="text-muted shoot-type">Wedding Ceremony</small>
+            <h4>{{shoot_date}} at {{shoot_time}}</h4>
+            <span class="client-name">{{contact_name}} <br/></span>
+            <small class="text-muted shoot-type">{{shoot_type}}</small>
             </p>
         </li>
-        <li class="list-group-item">
-            <p class="text-left">
-            <h4><span class="icon-star"></span> SEPT 23, 2013</h4>
-            <span class="client-name">Baljinder Singh <br/></span>
-            <small class="text-muted shoot-type">Wedding Ceremony</small>
-            </p>
-        </li>
-        <li class="list-group-item">
-            <p class="text-left">
-            <h4><span class="icon-star"></span> SEPT 23, 2013</h4>
-            <span class="client-name">Baljinder Singh <br/></span>
-            <small class="text-muted shoot-type">Wedding Ceremony</small>
-            </p>
-        </li>
-        <li class="list-group-item">
-            <p class="text-left">
-            <h4><span class="icon-star"></span> SEPT 23, 2013</h4>
-            <span class="client-name">Baljinder Singh <br/></span>
-            <small class="text-muted shoot-type">Wedding Ceremony</small>
-            </p>
-        </li>
-        <li class="list-group-item">
-            <p class="text-left">
-            <h4><span class="icon-star"></span> SEPT 23, 2013</h4>
-            <span class="client-name">Baljinder Singh <br/></span>
-            <small class="text-muted shoot-type">Wedding Ceremony</small>
-            </p>
-        </li>
+        {{/shoots}}
     </ul>
-    <div class="shoots">
-
-    </div>
-</script>
-
-<script id="shoot-list-view"  type="text/mustache">
-    {{#.}}
-        <a href="#shoots/{{id}}/show" class="list-group-item shoot">
-            <div class="row">
-                <div class="col-md-10 pull-left">
-                    <h4 class="text-primary">{{shoot_date}} {{shoot_time}}</h4>
-                    <h5 class="text-info">{{client_name}}</h5>
-                    <small class="text-muted">{{shoot_type}}</small>
-                </div>
-                <div class="col-md-2 pull-right">
-                    <h4><span class="typcn typcn-chevron-right pull-right"></span></h4>
-                </div>
-            </div>
-        </a>
-    {{/.}}
 </script>
 
 <script id="shoots-footer"  type="text/mustache">
@@ -121,48 +74,31 @@
 
 <script id="contacts-view"  type="text/mustache">
     <ul class="list-group contacts">
-        <li class="list-group-item">
-            <h4>Manjeet Singh</h4>
-            <span class="label label-success">+91-8800991034</span>
+        {{#contacts}}
+        {{#goToShootsCreate}}
+        <li class="list-group-item" data-href="#contacts/{{id}}/shoots/new">
+        {{/goToShootsCreate}}
+        {{^goToShootsCreate}}
+        <li class="list-group-item" data-href="#contacts/{{id}}/show">
+        {{/goToShootsCreate}}
+            <h5>{{name}}</h5>
+            <small>{{phone}}</small>
         </li>
-        <li class="list-group-item">
-            <h4>Manjeet Singh</h4>
-            <span class="label label-success">+91-8800991034</span>
-        </li>
-        <li class="list-group-item">
-            <h4>Manjeet Singh</h4>
-            <span class="label label-success">+91-8800991034</span>
-        </li>
-        <li class="list-group-item">
-            <h4>Manjeet Singh</h4>
-            <span class="label label-success">+91-8800991034</span>
-        </li>
+        {{/contacts}}
     </ul>
 </script>
 
 <script id="select-contact-view"  type="text/mustache">
-    <form role="form">
-        <div class="form-group">
-            <button type="submit" class="btn btn-info">Choose Existing</button>
-        </div>
-        <div class="form-group">
-            <h3 class="or">Or</h3>
-        </div>
-        <h2>New Contact</h2>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter Name">
-        </div>
-        <div class="form-group">
-            <label for="contact-no">Contact No</label>
-            <input type="text" class="form-control" id="contact-no" placeholder="Enter Contact No">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
-        </div>
-        <button type="submit" class="btn btn-success submit">Next</button>
-    </form>
+    <div class="form-group">
+        <button type="submit" id="choose-existing" class="btn btn-info input-lg">Choose Existing</button>
+    </div>
+    <div class="form-group">
+        <h3 class="or">Or</h3>
+    </div>
+    <h2>New Contact</h2>
+    <div class="form-area">
+    </div>
+    <button type="submit" id="submit-contact" class="btn btn-success submit input-lg">Next</button>
 </script>
 
 <script id="shoot-form-view"  type="text/mustache">
@@ -388,8 +324,6 @@
 <script src="app/signupCtrl.js"></script>
 <script src="app/contactsCtrl.js"></script>
 <script src="app/shootsCtrl.js"></script>
-<script src="app/newShootCtrl.js"></script>
-<script src="app/chooseContactCtrl.js"></script>
 <script src="app/routingCtrl.js"></script>
 <script src="app/app.js"></script>
 </body>

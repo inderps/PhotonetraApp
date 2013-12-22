@@ -6,6 +6,9 @@ var ShootsCtrl = can.Control.extend({
         else if(options.type == "show"){
             this.show(options.id);
         }
+        else if(options.type == "all"){
+            this.all(options.filter);
+        }
 //        $(".title").html("Shoots");
 //        $("#back").hide();
 //
@@ -21,6 +24,20 @@ var ShootsCtrl = can.Control.extend({
 //        }]);
 //        this.element.find(".shoots").append(shootListView);
 //        Footer.create(this.element, "#shoots-footer");
+    },
+
+    all: function(filter) {
+        var _this = this;
+        Shoot.findAll({id: window.photographerId, filter: filter}, function(shoots){
+            $(".title").html("Shoots");
+            $("#back").hide();
+
+            var shootsView = can.view("#shoots-view", {shoots: shoots});
+            _this.element.html(shootsView);
+            Footer.create(_this.element, "#shoots-footer");
+
+            Loader.stop();
+        });
     },
 
     show: function(id) {
@@ -63,5 +80,10 @@ var ShootsCtrl = can.Control.extend({
         Shoot.create(this.shoot.attr(), function(response){
             MessageModal.show("New shoot created successfully", "#shoots/" + response.id + "/show");
         });
+    },
+
+    ".shoots li click": function(el, ev){
+        ev.preventDefault();
+        window.location.hash = el.data("href");
     }
 });

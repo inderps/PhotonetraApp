@@ -5,7 +5,7 @@ var RoutingCtrl = can.Control.extend({
     "route": function(){
         Loader.start();
         $("#page").html("<div id='shoots-page'></div>")
-        this.options.shootsCtrl = new ShootsCtrl("#shoots-page");
+        this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "upcoming"});
     },
 
     "signup route": function(){
@@ -14,16 +14,28 @@ var RoutingCtrl = can.Control.extend({
         this.options.signupCtrl = new SignupCtrl("#signup-page");
     },
 
-    "shoots route" : function() {
+    "shoots/upcoming route" : function() {
         Loader.start();
         $("#page").html("<div id='shoots-page'></div>")
-        this.options.shootsCtrl = new ShootsCtrl("#shoots-page");
+        this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "upcoming"});
+    },
+
+    "shoots/all route" : function() {
+        Loader.start();
+        $("#page").html("<div id='shoots-page'></div>")
+        this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "all"});
     },
 
     "contacts route" : function() {
         Loader.start();
         $("#page").html("<div id='contacts-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all"});
+    },
+
+    "select_contacts route" : function() {
+        Loader.start();
+        $("#page").html("<div id='contacts-page'></div>")
+        this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all", ref: "select"});
     },
 
     "contacts/new route" : function() {
@@ -34,14 +46,14 @@ var RoutingCtrl = can.Control.extend({
 
     "contacts/:id/show route" : function(data) {
         Loader.start();
-        $("#page").html("<div id='contact-show-page'></div>")
+        $("#page").html("<div id='contact-show-page'></div>");
         this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "show", id: data.id});
     },
 
     "contacts/choose route" : function() {
         Loader.start();
-        $("#page").html("<div id='choose-contact-page'></div>")
-        this.options.chooseContactCtrl = new ChooseContactCtrl("#choose-contact-page");
+        $("#page").html("<div id='choose-contact-page'></div>");
+        this.options.contactsCtrl = new ContactsCtrl("#choose-contact-page", {type: "choose"});
     },
 
     "contacts/:id/shoots/new route" : function(data) {
@@ -54,13 +66,5 @@ var RoutingCtrl = can.Control.extend({
         Loader.start();
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
-    },
-
-    "shoots/upcoming route" : function() {
-
-    },
-
-    "shoots/{{id}}/show route" : function(data) {
-        console.log(data.id);
     }
 });
