@@ -50,6 +50,12 @@ var RoutingCtrl = can.Control.extend({
         this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "show", id: data.id});
     },
 
+    "contacts/:id/edit route" : function(data) {
+        Loader.start();
+        $("#page").html("<div id='contact-edit-page'></div>");
+        this.options.contactsCtrl = new ContactsCtrl("#contact-edit-page", {type: "edit", id: data.id});
+    },
+
     "contacts/choose route" : function() {
         Loader.start();
         $("#page").html("<div id='choose-contact-page'></div>");

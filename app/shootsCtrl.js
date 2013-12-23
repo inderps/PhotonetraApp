@@ -34,7 +34,7 @@ var ShootsCtrl = can.Control.extend({
 
             var shootsView = can.view("#shoots-view", {shoots: shoots});
             _this.element.html(shootsView);
-            Footer.create(_this.element, "#shoots-footer");
+            Footer.create(_this.element, "#shoots-footer", null);
 
             Loader.stop();
         });
@@ -48,7 +48,7 @@ var ShootsCtrl = can.Control.extend({
 
             var shootView = can.view("#shoot-view", shoot);
             _this.element.html(shootView);
-            Footer.create(_this.element, "#shoot-footer");
+            Footer.create(_this.element, "#shoot-footer", null);
             Loader.stop();
         });
     },

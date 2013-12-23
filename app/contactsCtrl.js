@@ -12,6 +12,9 @@ var ContactsCtrl = can.Control.extend({
         else if(options.type == "show"){
             this.show(options.id);
         }
+        else if(options.type == "edit"){
+            this.edit(options.id);
+        }
     },
 
     show: function(id){
@@ -22,7 +25,7 @@ var ContactsCtrl = can.Control.extend({
 
             var contactView = can.view("#contact-view", contact);
             _this.element.html(contactView);
-            Footer.create(_this.element, "#contact-footer");
+            Footer.create(_this.element, "#contact-footer", contact);
             Loader.stop();
         });
     },
@@ -42,7 +45,7 @@ var ContactsCtrl = can.Control.extend({
             var contactsView = can.view("#contacts-view", {contacts: contacts, goToShootsCreate: goToShootsCreate});
             _this.element.html(contactsView);
 
-            Footer.create(_this.element, "#contacts-footer");
+            Footer.create(_this.element, "#contacts-footer", null);
             Loader.stop();
         });
     },
@@ -62,6 +65,27 @@ var ContactsCtrl = can.Control.extend({
         this.element.html(contactForm);
         this.element.find("form").append("<button id='create-contact' class='btn btn-success btn-lg submit'>Create</button>")
         Loader.stop();
+    },
+
+    edit: function(id){
+        var _this = this;
+        Contact.findOne({id: id}, function(contact){
+            $(".title").html(contact.name);
+            $("#back").show();
+
+            _this.contact = new can.Map({
+                photographer_id: window.photographerId,
+                id: contact.id,
+                name: contact.name,
+                email: contact.email,
+                phone: contact.phone
+            });
+
+            var contactForm = can.view("#contact-form-view", _this.contact);
+            _this.element.html(contactForm);
+            _this.element.find("form").append("<button id='update-contact' class='btn btn-success btn-lg submit'>Update</button>")
+            Loader.stop();
+        });
     },
 
     choose: function(){
@@ -88,6 +112,14 @@ var ContactsCtrl = can.Control.extend({
 
         Contact.create(this.contact.attr(), function(response){
             MessageModal.show("New contact created successfully", "#contacts/" + response.id + "/show");
+        });
+    },
+
+    "#update-contact click": function(el, ev){
+        ev.preventDefault();
+
+        Contact.update(this.contact.attr(), function(response){
+            MessageModal.show("Contact updated successfully", "#contacts/" + response.id + "/show");
         });
     },
 
