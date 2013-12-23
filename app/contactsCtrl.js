@@ -91,6 +91,14 @@ var ContactsCtrl = can.Control.extend({
         });
     },
 
+    "#create-contact-to-shoot click": function(el, ev){
+        ev.preventDefault();
+
+        Contact.create(this.contact.attr(), function(response){
+            window.location.hash = "#contacts/" + response.id + "/shoots/new";
+        });
+    },
+
     "#choose-existing click": function(el, ev){
         ev.preventDefault();
         window.location.hash = "#select_contacts";
