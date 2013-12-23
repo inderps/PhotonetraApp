@@ -104,33 +104,33 @@
 <script id="shoot-form-view"  type="text/mustache">
     <form role="form">
         <div class="form-group">
-            <label for="shoot-type">Shoot Type</label>
+            <label class="control-label" for="shoot-type">Shoot Type</label>
             <select class="form-control input-lg" id="shoot-type" can-value="shoot_type">
                 <option value="wedding">Wedding</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="shoot-date">Shoot Date</label>
+            <label class="control-label" for="shoot-date">Shoot Date</label>
             <input type="text" class="form-control input-lg" id="shoot-date" can-value="shoot_date" placeholder="Enter Shoot Date">
         </div>
         <div class="form-group">
-            <label for="shoot-time">Shoot Time</label>
+            <label class="control-label" for="shoot-time">Shoot Time</label>
             <input type="text" class="form-control input-lg" id="shoot-time" can-value="shoot_time" placeholder="Enter Shoot Time">
         </div>
         <div class="form-group">
-            <label for="location">Location</label>
+            <label class="control-label" for="location">Location</label>
             <input type="text" class="form-control input-lg" id="location" can-value="location" placeholder="Enter location">
         </div>
         <div class="form-group">
-            <label for="delivery-date">Delivery Date</label>
+            <label class="control-label" for="delivery-date">Delivery Date</label>
             <input type="text" class="form-control input-lg" id="delivery-date" can-value="delivery_date" placeholder="Enter Delivery date">
         </div>
         <div class="form-group">
-            <label for="charges">Charges</label>
+            <label class="control-label" for="charges">Charges</label>
             <input type="number" class="form-control input-lg" id="charges" can-value="charges" placeholder="Enter Charges">
         </div>
         <div class="form-group">
-            <label for="notes">Notes (optional)</label>
+            <label class="control-label" for="notes">Notes (optional)</label>
             <textarea class="form-control input-lg" id="notes" can-value="notes" placeholder="Enter Notes (optional)"></textarea>
         </div>
     </form>
@@ -139,15 +139,15 @@
 <script id="contact-form-view"  type="text/mustache">
     <form role="form">
         <div class="form-group">
-            <label for="name">Name</label>
+            <label class="control-label" for="name">Name</label>
             <input type="text" class="form-control input-lg" id="name" can-value="name" placeholder="Enter Name">
         </div>
         <div class="form-group">
-            <label for="contact-no">Contact No</label>
+            <label class="control-label" for="contact-no">Contact No</label>
             <input type="text" class="form-control input-lg" id="contact-no" can-value="phone" placeholder="Enter Contact No">
         </div>
         <div class="form-group">
-            <label for="email">Email address</label>
+            <label class="control-label" for="email">Email address</label>
             <input type="email" class="form-control input-lg" id="email" can-value="email" placeholder="Enter email">
         </div>
     </form>
@@ -266,29 +266,29 @@
 </script>
 
 <script id="signup-view"  type="text/mustache">
-    <form role="form">
+    <form role="form" id="signup-form">
         <div class="form-group">
-            <label for="name">Name</label>
+            <label class="control-label" for="name">Name</label>
             <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Enter your Name">
         </div>
         <div class="form-group">
-            <label for="studio_name">Studio Name</label>
+            <label class="control-label" for="studio_name">Studio Name</label>
             <input type="text" class="form-control input-lg" id="studio_name" name="studio_name" placeholder="Enter Studio Name">
         </div>
         <div class="form-group">
-            <label for="email">Email address</label>
+            <label class="control-label" for="email">Email address</label>
             <input type="email" class="form-control input-lg" id="email" name="email" placeholder="Enter email">
         </div>
         <div class="form-group">
-            <label for="phone">Phone No</label>
+            <label class="control-label" for="phone">Phone No</label>
             <input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="Enter Studio Name">
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label class="control-label" for="password">Password</label>
             <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password">
         </div>
         <div class="form-group">
-            <label for="confirm_password">Confirm Password</label>
+            <label class="control-label" for="confirm_password">Confirm Password</label>
             <input type="password" class="form-control input-lg" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
         </div>
         <button type="submit" class="btn btn-success submit btn-lg">Create Account</button>
@@ -312,11 +312,13 @@
 <script src="lib/jquery/jquery.serializeJSON.js"></script>
 <script src="lib/crossdomain/crossdomain.js"></script>
 <script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/jquery/jquery.validate.min.js"></script>
 <script src="lib/canjs/can.jquery.min.js"></script>
 <script src="lib/sidr/jquery.sidr.min.js"></script>
 <script src="app/components/host.js"></script>
 <script src="app/commons/loader.js"></script>
 <script src="app/commons/footer.js"></script>
+<script src="app/commons/validate.js"></script>
 <script src="app/commons/messageModal.js"></script>
 <script src="app/models/photographer.js"></script>
 <script src="app/models/contact.js"></script>

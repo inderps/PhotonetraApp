@@ -72,6 +72,10 @@ form h2{
     background-image: url("/img/spinner.gif");
 }
 
+label.error{
+    color: #ee5f5b;
+    margin-top: 5px;
+}
 /*button, input, select, textarea {*/
     /*height: 45px;*/
 /*}*/
