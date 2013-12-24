@@ -32,15 +32,17 @@ var ContactsCtrl = can.Control.extend({
 
     all: function(ref){
         var _this = this;
+        $(".title").html("Contacts");
+        $("#back").hide();
+
         var goToShootsCreate = false;
 
         if(ref){
             goToShootsCreate = true;
+            $("#back").show();
         }
 
         Contact.findAll({id: window.photographerId}, function(contacts){
-            $(".title").html("Contacts");
-            $("#back").hide();
 
             var contactsView = can.view("#contacts-view", {contacts: contacts, goToShootsCreate: goToShootsCreate});
             _this.element.html(contactsView);
