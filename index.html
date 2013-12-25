@@ -8,6 +8,9 @@
 <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="lib/sidr/jquery.sidr.dark.css" rel="stylesheet">
 <link href="lib/font/css/fontello.css" rel="stylesheet">
+<link href="lib/pickadate/default.css" rel="stylesheet">
+<link href="lib/pickadate/default.date.css" rel="stylesheet">
+<link href="lib/pickadate/default.time.css" rel="stylesheet">
 <link href="app/app.css" rel="stylesheet">
 </head>
 <body>
@@ -104,36 +107,36 @@
 </script>
 
 <script id="shoot-form-view"  type="text/mustache">
-    <form role="form">
+    <form role="form" id="new-shoot-form">
         <div class="form-group">
             <label class="control-label" for="shoot-type">Shoot Type</label>
-            <select class="form-control input-lg" id="shoot-type" can-value="shoot_type">
+            <select class="form-control input-lg" name="shoot_type" id="shoot-type" can-value="shoot_type">
                 <option value="wedding">Wedding</option>
             </select>
         </div>
         <div class="form-group">
             <label class="control-label" for="shoot-date">Shoot Date</label>
-            <input type="text" class="form-control input-lg" id="shoot-date" can-value="shoot_date" placeholder="Enter Shoot Date">
+            <input type="text" class="form-control input-lg" name="shoot_date" id="shoot-date" can-value="shoot_date" placeholder="Enter Shoot Date">
         </div>
         <div class="form-group">
             <label class="control-label" for="shoot-time">Shoot Time</label>
-            <input type="text" class="form-control input-lg" id="shoot-time" can-value="shoot_time" placeholder="Enter Shoot Time">
+            <input type="text" class="form-control input-lg" name="shoot_time" id="shoot-time" can-value="shoot_time" placeholder="Enter Shoot Time">
         </div>
         <div class="form-group">
             <label class="control-label" for="location">Location</label>
-            <input type="text" class="form-control input-lg" id="location" can-value="location" placeholder="Enter location">
+            <textarea class="form-control input-lg" id="location" name="location" can-value="location" placeholder="Enter location"></textarea>
         </div>
         <div class="form-group">
             <label class="control-label" for="delivery-date">Delivery Date</label>
-            <input type="text" class="form-control input-lg" id="delivery-date" can-value="delivery_date" placeholder="Enter Delivery date">
+            <input type="text" class="form-control input-lg" name="delivery_date" id="delivery-date" can-value="delivery_date" placeholder="Enter Delivery date">
         </div>
         <div class="form-group">
             <label class="control-label" for="charges">Charges</label>
-            <input type="number" class="form-control input-lg" id="charges" can-value="charges" placeholder="Enter Charges">
+            <input type="number" class="form-control input-lg" name="charges" id="charges" can-value="charges" placeholder="Enter Charges">
         </div>
         <div class="form-group">
             <label class="control-label" for="notes">Notes (optional)</label>
-            <textarea class="form-control input-lg" id="notes" can-value="notes" placeholder="Enter Notes (optional)"></textarea>
+            <textarea class="form-control input-lg" id="notes" name="notes" can-value="notes" placeholder="Enter Notes (optional)"></textarea>
         </div>
     </form>
 </script>
@@ -281,7 +284,7 @@
             <label class="control-label" for="confirm_password">Confirm Password</label>
             <input type="password" class="form-control input-lg" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
         </div>
-        <button type="submit" class="btn btn-success submit btn-lg">Create Account</button>
+        <button type="submit" class="btn btn-success submit btn-lg"><span class='icon-thumbs-up-alt'></span> Create Account</button>
     </form>
 </script>
 
@@ -305,11 +308,15 @@
 <script src="lib/jquery/jquery.validate.min.js"></script>
 <script src="lib/canjs/can.jquery.min.js"></script>
 <script src="lib/sidr/jquery.sidr.min.js"></script>
+<script src="lib/pickadate/picker.js"></script>
+<script src="lib/pickadate/picker.date.js"></script>
+<script src="lib/pickadate/picker.time.js"></script>
 <script src="app/components/host.js"></script>
 <script src="app/commons/loader.js"></script>
 <script src="app/commons/footer.js"></script>
 <script src="app/commons/validate.js"></script>
 <script src="app/commons/messageModal.js"></script>
+<script src="app/commons/datetimepicker.js"></script>
 <script src="app/models/photographer.js"></script>
 <script src="app/models/contact.js"></script>
 <script src="app/models/shoot.js"></script>

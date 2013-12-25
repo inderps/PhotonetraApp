@@ -9,21 +9,6 @@ var ShootsCtrl = can.Control.extend({
         else if(options.type == "all"){
             this.all(options.filter);
         }
-//        $(".title").html("Shoots");
-//        $("#back").hide();
-//
-//        var shootsView = can.view("#shoots-view");
-//        this.element.html(shootsView);
-//
-//        var shootListView = can.view("#shoot-list-view", [{
-//            id: "1",
-//            shoot_date: "July 27, 2013",
-//            shoot_time: "1:00 PM",
-//            client_name: "Manjeet Singh",
-//            shoot_type: "Wedding Shoots"
-//        }]);
-//        this.element.find(".shoots").append(shootListView);
-//        Footer.create(this.element, "#shoots-footer");
     },
 
     all: function(filter) {
@@ -54,7 +39,7 @@ var ShootsCtrl = can.Control.extend({
     },
 
     new: function(contactId) {
-        $(".title").html("Create New Shoot");
+        $(".title").html("<span class='icon-camera'></span> Create New Shoot");
         $("#back").show();
 
         this.shoot = new can.Map({
@@ -71,15 +56,34 @@ var ShootsCtrl = can.Control.extend({
         var shootForm = can.view("#shoot-form-view", this.shoot);
         this.element.html(shootForm);
         this.element.find("form").append("<button id='create-shoot' class='btn btn-success btn-lg submit'><span class='icon-plus'></span> Create</button>")
+
+        Validate.setup("#new-shoot-form", {
+            shoot_date: {
+                required: true
+            },
+            shoot_time: {
+                required: true
+            },
+            location: {
+                required: true
+            }
+        });
+
+        DateTimePicker.dateInit("#shoot-date");
+        DateTimePicker.dateInit("#delivery-date");
+        DateTimePicker.timeInit("#shoot-time");
+
         Loader.stop();
     },
 
     "#create-shoot click": function(el, ev){
         ev.preventDefault();
 
-        Shoot.create(this.shoot.attr(), function(response){
-            MessageModal.show("New shoot created successfully", "#shoots/" + response.id + "/show");
-        });
+        if(this.element.find("form").valid()){
+            Shoot.create(this.shoot.attr(), function(response){
+                MessageModal.show("New shoot created successfully", "#shoots/" + response.id + "/show");
+            });
+        }
     },
 
     ".shoots li click": function(el, ev){
