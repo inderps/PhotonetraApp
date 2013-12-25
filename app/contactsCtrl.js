@@ -121,6 +121,20 @@ var ContactsCtrl = can.Control.extend({
 
         var contactForm = can.view("#contact-form-view", this.contact);
         this.element.find(".form-area").html(contactForm);
+
+        Validate.setup("#new-contact-form", {
+            name: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        });
+
         Loader.stop();
     },
 
@@ -145,9 +159,11 @@ var ContactsCtrl = can.Control.extend({
     "#create-contact-to-shoot click": function(el, ev){
         ev.preventDefault();
 
-        Contact.create(this.contact.attr(), function(response){
-            window.location.hash = "#contacts/" + response.id + "/shoots/new";
-        });
+        if(this.element.find("form").valid()){
+            Contact.create(this.contact.attr(), function(response){
+                window.location.hash = "#contacts/" + response.id + "/shoots/new";
+            });
+        }
     },
 
     "#choose-existing click": function(el, ev){
