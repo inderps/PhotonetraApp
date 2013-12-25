@@ -45,7 +45,7 @@
         <li class="list-group-item" data-href="#shoots/{{id}}/show">
             <p class="text-left">
             <h3 class="text-main">{{shoot_date}}</h3>
-            <h5><span class="icon-clock"></span>{{shoot_time}}</h5>
+            <h5><span class="icon-clock"></span>{{shoot_time_from}} to {{shoot_time_to}}</h5>
             <span class="client-name text-info"><span class="icon-user"></span>{{contact_name}} <br/></span>
             <small class="text-muted shoot-type"><span class="icon-glass"></span>{{shoot_type}}</small>
             </p>
@@ -119,8 +119,12 @@
             <input type="text" class="form-control input-lg" name="shoot_date" id="shoot-date" can-value="shoot_date" placeholder="Enter Shoot Date">
         </div>
         <div class="form-group">
-            <label class="control-label" for="shoot-time">Shoot Time</label>
-            <input type="text" class="form-control input-lg" name="shoot_time" id="shoot-time" can-value="shoot_time" placeholder="Enter Shoot Time">
+            <label class="control-label" for="shoot-time-from">Shoot Time (from)</label>
+            <input type="text" class="form-control input-lg" name="shoot_time_from" id="shoot-time-from" can-value="shoot_time_from" placeholder="Enter Shoot Time (from)">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="shoot-time-to">Shoot Time (to)</label>
+            <input type="text" class="form-control input-lg" name="shoot_time_to" id="shoot-time-to" can-value="shoot_time_to" placeholder="Enter Shoot Time (to)">
         </div>
         <div class="form-group">
             <label class="control-label" for="location">Location</label>
@@ -198,7 +202,7 @@
 <script id="shoot-view"  type="text/mustache">
     <div class="jumbotron">
       <h1 class="shoot-date">{{shoot_date}}</h1>
-      <h5 class="text-muted"><span class="icon-clock"></span> {{shoot_time}}</h5>
+      <h5 class="text-muted"><span class="icon-clock"></span> {{shoot_time_from}} to {{shoot_time_to}}</h5>
       <p><span class="icon-location text"></span> {{location}}</p>
     </div>
     <div class="panel panel-info">
@@ -275,6 +279,10 @@
         <div class="form-group">
             <label class="control-label" for="phone">Phone No</label>
             <input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="Enter Studio Name">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="website">Website</label>
+            <input type="text" class="form-control input-lg" id="website" name="website" placeholder="Enter Website address">
         </div>
         <div class="form-group">
             <label class="control-label" for="password">Password</label>

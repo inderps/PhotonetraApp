@@ -46,7 +46,8 @@ var ShootsCtrl = can.Control.extend({
             contact_id: contactId,
             shoot_type: "wedding",
             shoot_date: "",
-            shoot_time: "",
+            shoot_time_from: "",
+            shoot_time_to: "",
             location: "",
             delivery_date: "",
             charges: "",
@@ -61,7 +62,10 @@ var ShootsCtrl = can.Control.extend({
             shoot_date: {
                 required: true
             },
-            shoot_time: {
+            shoot_time_from: {
+                required: true
+            },
+            shoot_time_to: {
                 required: true
             },
             location: {
@@ -71,7 +75,8 @@ var ShootsCtrl = can.Control.extend({
 
         DateTimePicker.dateInit("#shoot-date");
         DateTimePicker.dateInit("#delivery-date");
-        DateTimePicker.timeInit("#shoot-time");
+        DateTimePicker.timeInit("#shoot-time-from");
+        DateTimePicker.timeInit("#shoot-time-to");
 
         Loader.stop();
     },

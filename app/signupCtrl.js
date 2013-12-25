@@ -18,6 +18,9 @@ var SignupCtrl = can.Control.extend({
                 required: true,
                 email: true
             },
+            website: {
+                url: true
+            },
             password: {
                 required: true,
                 minlength : 5
