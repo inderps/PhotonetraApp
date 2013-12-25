@@ -1,3 +1,4 @@
+<!--http://pellepim.bitbucket.org/jstz/-->
 <!DOCTYPE html>
 <html>
 <head title="Photonetra">
@@ -40,9 +41,10 @@
         {{#shoots}}
         <li class="list-group-item" data-href="#shoots/{{id}}/show">
             <p class="text-left">
-            <h4>{{shoot_date}} at {{shoot_time}}</h4>
-            <span class="client-name">{{contact_name}} <br/></span>
-            <small class="text-muted shoot-type">{{shoot_type}}</small>
+            <h3 class="text-main">{{shoot_date}}</h3>
+            <h5><span class="icon-clock"></span>{{shoot_time}}</h5>
+            <span class="client-name text-info"><span class="icon-user"></span>{{contact_name}} <br/></span>
+            <small class="text-muted shoot-type"><span class="icon-glass"></span>{{shoot_type}}</small>
             </p>
         </li>
         {{/shoots}}
@@ -81,8 +83,8 @@
         {{^goToShootsCreate}}
         <li class="list-group-item" data-href="#contacts/{{id}}/show">
         {{/goToShootsCreate}}
-            <h5>{{name}}</h5>
-            <small>{{phone}}</small>
+            <h5 class="text-main"><span class="icon-user"></span> {{name}}</h5>
+            <small><span class="icon-phone"></span> {{phone}}</small>
         </li>
         {{/contacts}}
     </ul>
@@ -90,15 +92,15 @@
 
 <script id="select-contact-view"  type="text/mustache">
     <div class="form-group">
-        <button type="submit" id="choose-existing" class="btn btn-info input-lg">Choose Existing</button>
+        <button type="submit" id="choose-existing" class="btn btn-info input-lg"><span class="icon-user"></span> Choose Existing</button>
     </div>
     <div class="form-group">
         <h3 class="or">Or</h3>
     </div>
-    <h2>New Contact</h2>
+    <h2 class="text-main"><span class="icon-user"></span> New Contact</h2>
     <div class="form-area">
     </div>
-    <button type="submit" id="create-contact-to-shoot" class="btn btn-success submit input-lg">Next</button>
+    <button type="submit" id="create-contact-to-shoot" class="btn btn-success submit input-lg">Next<span class="icon-right-open"></span></button>
 </script>
 
 <script id="shoot-form-view"  type="text/mustache">
@@ -154,18 +156,18 @@
 </script>
 
 <script id="contact-view"  type="text/mustache">
-    <div class="panel panel-default">
+    <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">Phone No</h3>
+            <h3 class="panel-title"><span class='icon-phone'></span> Phone No</h3>
         </div>
         <div class="panel-body">
             <a href="tel:{{phone}}"><h4>{{phone}}</h4></a>
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-success">
         <div class="panel-heading">
-            <h3 class="panel-title">Email</h3>
+            <h3 class="panel-title"><span class='icon-mail'></span> Email</h3>
         </div>
         <div class="panel-body">
             <h4>{{email}}</h4>
@@ -173,7 +175,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 text-center">
-            <a href="#contacts/{{id}}/shoots/new" class="btn btn-info">Add New Shoot</a>
+            <a href="#contacts/{{id}}/shoots/new" class="btn btn-info"><span class='icon-camera'></span> Add New Shoot</a>
         </div>
     </div>
 </script>
@@ -184,68 +186,56 @@
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
             <div class="btn-group btn-group-justified">
-                <a href="#contacts/{{id}}/edit" class="btn btn-default">Edit</a>
+                <a href="#contacts/{{id}}/edit" class="btn btn-default"><span class='icon-pencil'></span> Edit</a>
             </div>
         </div>
     </nav>
 </script>
 
 <script id="shoot-view"  type="text/mustache">
-    <div class="panel panel-default">
+    <div class="jumbotron">
+      <h1 class="shoot-date">{{shoot_date}}</h1>
+      <h5 class="text-muted"><span class="icon-clock"></span> {{shoot_time}}</h5>
+      <p><span class="icon-location text"></span> {{location}}</p>
+    </div>
+    <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">Contact</h3>
+            <h3 class="panel-title"><span class="icon-user"></span>Contact Details</h3>
         </div>
         <div class="panel-body">
             <h4>{{name}}</h4>
-            <h5>{{email}}</h5>
-            <a href="tel:{{phone}}"><h4>{{phone}}</h4></a>
+            <h5><span class="icon-mail"></span> {{email}}</h5>
+            <a href="tel:{{phone}}"><h4><span class="icon-phone"></span> {{phone}}</h4></a>
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-warning">
         <div class="panel-heading">
-            <h3 class="panel-title">Shooting Date & Time</h3>
-        </div>
-        <div class="panel-body">
-            <p>{{shoot_date}} at {{shoot_time}}</p>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Location</h3>
-        </div>
-        <div class="panel-body">
-            <p>{{location}}</p>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Delivery Date</h3>
+            <h3 class="panel-title"><span class="icon-calendar"></span>Delivery Date</h3>
         </div>
         <div class="panel-body">
             <p>{{delivery_date}}</p>
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-danger">
         <div class="panel-heading">
-            <h3 class="panel-title">Notes</h3>
+            <h3 class="panel-title"><span class="icon-money"></span>Charges</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{charges}}</p>
+        </div>
+    </div>
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="icon-doc-text"></span>Notes</h3>
         </div>
         <div class="panel-body">
             <p>{{notes}}</p>
         </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Charges</h3>
-        </div>
-        <div class="panel-body">
-            <p>{{charges}}</p>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-12 text-center">
             <a href="#contacts/{{id}}/shoots/new" class="btn btn-info">Add New Shoot</a>
@@ -259,7 +249,7 @@
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
             <div class="btn-group btn-group-justified">
-                <a href="#contacts/new" class="btn btn-default">Edit</a>
+                <a href="#contacts/new" class="btn btn-default"><span class="icon-pencil"></span> Edit</a>
             </div>
         </div>
     </nav>

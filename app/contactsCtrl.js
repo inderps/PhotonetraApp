@@ -32,7 +32,7 @@ var ContactsCtrl = can.Control.extend({
 
     all: function(ref){
         var _this = this;
-        $(".title").html("Contacts");
+        $(".title").html("<span class='icon-user'></span> Contacts");
         $("#back").hide();
 
         var goToShootsCreate = false;
@@ -65,7 +65,7 @@ var ContactsCtrl = can.Control.extend({
 
         var contactForm = can.view("#contact-form-view", this.contact);
         this.element.html(contactForm);
-        this.element.find("form").append("<button id='create-contact' class='btn btn-success btn-lg submit'>Create</button>")
+        this.element.find("form").append("<button id='create-contact' class='btn btn-success btn-lg submit'><span class='icon-plus'></span> Create</button>")
         Loader.stop();
     },
 

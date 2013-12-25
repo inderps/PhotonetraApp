@@ -8,6 +8,16 @@
     position: absolute;
 }
 
+.text-main{
+    color: #FFBF00;
+}
+
+.panel-main>.panel-heading{
+    color: #ffffff;
+    background-color: #FFBF00;
+    border: none;
+}
+
 #menu{
     background: url("/img/open.png") center center no-repeat;
     display: block;
@@ -76,6 +86,11 @@ label.error{
     color: #ee5f5b;
     margin-top: 5px;
 }
+
+#shoot-show-page .shoot-date{
+    color: #FFBF00;
+}
+
 /*button, input, select, textarea {*/
     /*height: 45px;*/
 /*}*/

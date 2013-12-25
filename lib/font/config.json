@@ -7,16 +7,76 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "cfaa8fbbdcc7bb8d636cb974aad1f9b9",
+      "css": "glass",
+      "code": 59409,
+      "src": "fontawesome"
+    },
+    {
       "uid": "474656633f79ea2f1dad59ff63f6bf07",
       "css": "star",
       "code": 59396,
       "src": "fontawesome"
     },
     {
+      "uid": "dc3f1d5b1d006f7f7b3b6295eccab9da",
+      "css": "camera",
+      "code": 59406,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "6a06892e76b81e023da6ddfb38a26b37",
+      "css": "doc-text",
+      "code": 59400,
+      "src": "typicons"
+    },
+    {
+      "uid": "6zhrgcf3co77hnljttd3b2mrc8z5fiq5",
+      "css": "right-open",
+      "code": 59410,
+      "src": "typicons"
+    },
+    {
+      "uid": "937f4db8b6ff3348a1d9fcd5e12fd2fe",
+      "css": "mail",
+      "code": 59407,
+      "src": "iconic"
+    },
+    {
+      "uid": "86ee1fc7ff57e9c9c60d8a5e57183776",
+      "css": "user",
+      "code": 59408,
+      "src": "iconic"
+    },
+    {
       "uid": "ce5e29aa5208417700e7f7012a236c00",
       "css": "undo",
       "code": 59397,
       "src": "iconic"
+    },
+    {
+      "uid": "b99d736cef489a3150ba8aac7c4e8403",
+      "css": "clock",
+      "code": 59403,
+      "src": "iconic"
+    },
+    {
+      "uid": "too2rspp5e6z6m0y6lconmv23uw3qlqo",
+      "css": "location",
+      "code": 59402,
+      "src": "modernpics"
+    },
+    {
+      "uid": "212ab54aac31030950fec3e2448ebee9",
+      "css": "money",
+      "code": 59404,
+      "src": "modernpics"
+    },
+    {
+      "uid": "0299bec28699eedda42f46c77239393e",
+      "css": "pencil",
+      "code": 59399,
+      "src": "mfglabs"
     },
     {
       "uid": "e45e9f27ce40ba9837cc984076d98067",
@@ -37,6 +97,12 @@
       "src": "elusive"
     },
     {
+      "uid": "c91098f07ff0df45b3f8666b72b75801",
+      "css": "phone",
+      "code": 59405,
+      "src": "elusive"
+    },
+    {
       "uid": "1b2ef17b42012a1e46743f9be8384f83",
       "css": "left",
       "code": 59398,
@@ -47,6 +113,12 @@
       "css": "filter",
       "code": 59393,
       "src": "elusive"
+    },
+    {
+      "uid": "43e4647c57186b5e06874621b5e665be",
+      "css": "calendar",
+      "code": 59401,
+      "src": "linecons"
     }
   ]
 }

@@ -29,7 +29,7 @@ var ShootsCtrl = can.Control.extend({
     all: function(filter) {
         var _this = this;
         Shoot.findAll({id: window.photographerId, filter: filter}, function(shoots){
-            $(".title").html("Shoots");
+            $(".title").html("<span class='icon-camera'></span> Shoots");
             $("#back").hide();
 
             var shootsView = can.view("#shoots-view", {shoots: shoots});
@@ -43,7 +43,7 @@ var ShootsCtrl = can.Control.extend({
     show: function(id) {
         var _this = this;
         Shoot.findOne({id: id}, function(shoot){
-            $(".title").html(shoot.shoot_type);
+            $(".title").html("<span class='icon-glass'></span> " + shoot.shoot_type);
             $("#back").show();
 
             var shootView = can.view("#shoot-view", shoot);
@@ -70,7 +70,7 @@ var ShootsCtrl = can.Control.extend({
 
         var shootForm = can.view("#shoot-form-view", this.shoot);
         this.element.html(shootForm);
-        this.element.find("form").append("<button id='create-shoot' class='btn btn-success btn-lg submit'>Create</button>")
+        this.element.find("form").append("<button id='create-shoot' class='btn btn-success btn-lg submit'><span class='icon-plus'></span> Create</button>")
         Loader.stop();
     },
 
