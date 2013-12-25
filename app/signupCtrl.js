@@ -1,6 +1,6 @@
 var SignupCtrl = can.Control.extend({
     init: function( element, options ) {
-        $(".title").html("Sign Up");
+        $(".title").html("<span class='icon-emo-happy'></span> Sign Up");
         $("#back").hide();
         $("#menu").hide();
 

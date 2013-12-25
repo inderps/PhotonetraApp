@@ -1,14 +1,16 @@
 
-.icon-glass:before { content: '\e811'; } /* '' */
+.icon-emo-happy:before { content: '\e813'; } /* '' */
 .icon-calendar:before { content: '\e809'; } /* '' */
+.icon-star:before { content: '\e804'; } /* '' */
 .icon-camera:before { content: '\e80e'; } /* '' */
+.icon-thumbs-up-alt:before { content: '\e814'; } /* '' */
 .icon-doc-text:before { content: '\e808'; } /* '' */
 .icon-right-open:before { content: '\e812'; } /* '' */
 .icon-mail:before { content: '\e80f'; } /* '' */
 .icon-user:before { content: '\e810'; } /* '' */
 .icon-undo:before { content: '\e805'; } /* '' */
-.icon-clock:before { content: '\e80b'; } /* '' */
-.icon-star:before { content: '\e804'; } /* '' */
+.icon-glass:before { content: '\e811'; } /* '' */
+.icon-location:before { content: '\e80a'; } /* '' */
 .icon-money:before { content: '\e80c'; } /* '' */
 .icon-pencil:before { content: '\e807'; } /* '' */
 .icon-search:before { content: '\e803'; } /* '' */
@@ -17,4 +19,4 @@
 .icon-phone:before { content: '\e80d'; } /* '' */
 .icon-left:before { content: '\e806'; } /* '' */
 .icon-filter:before { content: '\e801'; } /* '' */
-.icon-location:before { content: '\e80a'; } /* '' */
+.icon-clock:before { content: '\e80b'; } /* '' */

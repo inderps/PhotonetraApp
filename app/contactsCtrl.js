@@ -20,7 +20,7 @@ var ContactsCtrl = can.Control.extend({
     show: function(id){
         var _this = this;
         Contact.findOne({id: id}, function(contact){
-            $(".title").html(contact.name);
+            $(".title").html("<span class='icon-user'></span> " + contact.name);
             $("#back").show();
 
             var contactView = can.view("#contact-view", contact);
@@ -53,7 +53,7 @@ var ContactsCtrl = can.Control.extend({
     },
 
     new: function(){
-        $(".title").html("Create New Contact");
+        $(".title").html("<span class='icon-user'></span> Create New Contact");
         $("#back").show();
 
         this.contact = new can.Map({
@@ -87,7 +87,7 @@ var ContactsCtrl = can.Control.extend({
     edit: function(id){
         var _this = this;
         Contact.findOne({id: id}, function(contact){
-            $(".title").html(contact.name);
+            $(".title").html("<span class='icon-user'></span> " + contact.name);
             $("#back").show();
 
             _this.contact = new can.Map({
@@ -106,7 +106,7 @@ var ContactsCtrl = can.Control.extend({
     },
 
     choose: function(){
-        $(".title").html("Choose Contact");
+        $(".title").html("<span class='icon-user'></span> Choose Contact");
         $("#back").show();
 
         var selectContactView = can.view("#select-contact-view");
