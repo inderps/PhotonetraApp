@@ -139,18 +139,18 @@
 </script>
 
 <script id="contact-form-view"  type="text/mustache">
-    <form role="form">
+    <form role="form" id="new-contact-form">
         <div class="form-group">
             <label class="control-label" for="name">Name</label>
-            <input type="text" class="form-control input-lg" id="name" can-value="name" placeholder="Enter Name">
+            <input type="text" class="form-control input-lg" name="name" id="name" can-value="name" placeholder="Enter Name">
         </div>
         <div class="form-group">
             <label class="control-label" for="contact-no">Contact No</label>
-            <input type="text" class="form-control input-lg" id="contact-no" can-value="phone" placeholder="Enter Contact No">
+            <input type="text" class="form-control input-lg" name="phone" id="contact-no" can-value="phone" placeholder="Enter Contact No">
         </div>
         <div class="form-group">
             <label class="control-label" for="email">Email address</label>
-            <input type="email" class="form-control input-lg" id="email" can-value="email" placeholder="Enter email">
+            <input type="email" class="form-control input-lg" name="email" id="email" can-value="email" placeholder="Enter email">
         </div>
     </form>
 </script>

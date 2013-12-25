@@ -66,6 +66,21 @@ var ContactsCtrl = can.Control.extend({
         var contactForm = can.view("#contact-form-view", this.contact);
         this.element.html(contactForm);
         this.element.find("form").append("<button id='create-contact' class='btn btn-success btn-lg submit'><span class='icon-plus'></span> Create</button>")
+
+
+        Validate.setup("#new-contact-form", {
+            name: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        });
+
         Loader.stop();
     },
 
@@ -112,9 +127,11 @@ var ContactsCtrl = can.Control.extend({
     "#create-contact click": function(el, ev){
         ev.preventDefault();
 
-        Contact.create(this.contact.attr(), function(response){
-            MessageModal.show("New contact created successfully", "#contacts/" + response.id + "/show");
-        });
+        if(this.element.find("form").valid()){
+            Contact.create(this.contact.attr(), function(response){
+                MessageModal.show("New contact created successfully", "#contacts/" + response.id + "/show");
+            });
+        }
     },
 
     "#update-contact click": function(el, ev){
