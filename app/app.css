@@ -18,6 +18,10 @@
     border: none;
 }
 
+.delivery-button{
+    margin-top: 20px;
+}
+
 #menu{
     background: url("/img/open.png") center center no-repeat;
     display: block;

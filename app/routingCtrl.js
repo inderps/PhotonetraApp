@@ -4,8 +4,8 @@ var RoutingCtrl = can.Control.extend({
 
     "route": function(){
         Loader.start();
-        $("#page").html("<div id='shoots-page'></div>")
-        this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "upcoming"});
+        $("#page").html("<div id='calendar-page'></div>")
+        this.options.calendarCtrl = new CalendarCtrl("#calendar-page");
     },
 
     "signup route": function(){
@@ -30,6 +30,12 @@ var RoutingCtrl = can.Control.extend({
         Loader.start();
         $("#page").html("<div id='contacts-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all"});
+    },
+
+    "delivery route" : function() {
+        Loader.start();
+        $("#page").html("<div id='delivery-page'></div>")
+        this.options.deliveryCtrl = new DeliveryCtrl("#delivery-page");
     },
 
     "select_contacts route" : function() {
@@ -77,6 +83,13 @@ var RoutingCtrl = can.Control.extend({
     "shoots/:id/show  route" : function(data) {
         Loader.start();
         $("#back").attr("href", "#shoots/upcoming");
+        $("#page").html("<div id='shoot-show-page'></div>")
+        this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
+    },
+
+    "shoots/:id/pending_delivery  route" : function(data) {
+        Loader.start();
+        $("#back").attr("href", "#delivery");
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     }

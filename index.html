@@ -11,6 +11,8 @@
 <link href="lib/pickadate/default.css" rel="stylesheet">
 <link href="lib/pickadate/default.date.css" rel="stylesheet">
 <link href="lib/pickadate/default.time.css" rel="stylesheet">
+<link href="lib/calendar/calendar.css" rel="stylesheet">
+<link href="lib/calendar/custom.css" rel="stylesheet">
 <link href="app/app.css" rel="stylesheet">
 </head>
 <body>
@@ -33,7 +35,7 @@
     <ul>
         <li><a href="#shoots/upcoming">Shoots</a></li>
         <li><a href="#contacts">Clients</a></li>
-        <li><a href="#">Delivery</a></li>
+        <li><a href="#delivery">Delivery</a></li>
         <li><a href="#">Payments</a></li>
         <li><a href="#">Logout</a></li>
     </ul>
@@ -48,6 +50,21 @@
             <h5><span class="icon-clock"></span>{{shoot_time_from}} to {{shoot_time_to}}</h5>
             <span class="client-name text-info"><span class="icon-user"></span>{{contact_name}} <br/></span>
             <small class="text-muted shoot-type"><span class="icon-glass"></span>{{shoot_type}}</small>
+            </p>
+        </li>
+        {{/shoots}}
+    </ul>
+</script>
+
+<script id="delivery-view"  type="text/mustache">
+    <ul class="list-group shoots">
+        {{#shoots}}
+        <li class="list-group-item" data-href="#shoots/{{id}}/pending_delivery">
+            <p class="text-left">
+            <h3 class="text-danger"><span class="icon-bell-alt"></span> {{delivery_date}}</h3>
+            <h5><span class="icon-glass"></span>{{shoot_type}}</h5>
+            <span class="text-info"><span class="icon-camera"></span> {{shoot_date}} <br/></span>
+            <small class="text-muted"><span class="icon-user"></span>{{contact_name}}</small>
             </p>
         </li>
         {{/shoots}}
@@ -201,18 +218,21 @@
 
 <script id="shoot-view"  type="text/mustache">
     <div class="jumbotron">
-      <h1 class="shoot-date">{{shoot_date}}</h1>
-      <h5 class="text-muted"><span class="icon-clock"></span> {{shoot_time_from}} to {{shoot_time_to}}</h5>
-      <p><span class="icon-location text"></span> {{location}}</p>
+      <h1 class="shoot-date">{{shoot.shoot_date}}</h1>
+      <h5 class="text-muted"><span class="icon-clock"></span> {{shoot.shoot_time_from}} to {{shoot.shoot_time_to}}</h5>
+      <p><span class="icon-location text"></span> {{shoot.location}}</p>
+      {{#show_delivery}}
+          <p class="text-center"><button class="btn btn-danger btn-lg delivery-button" role="button"><span class="icon-ok"></span> Mark Delivery</button></p>
+      {{/show_delivery}}
     </div>
     <div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title"><span class="icon-user"></span>Contact Details</h3>
         </div>
         <div class="panel-body">
-            <h4>{{name}}</h4>
-            <h5><span class="icon-mail"></span> {{email}}</h5>
-            <a href="tel:{{phone}}"><h4><span class="icon-phone"></span> {{phone}}</h4></a>
+            <h4>{{shoot.name}}</h4>
+            <h5><span class="icon-mail"></span> {{shoot.email}}</h5>
+            <a href="tel:{{phone}}"><h4><span class="icon-phone"></span> {{shoot.phone}}</h4></a>
         </div>
     </div>
 
@@ -221,7 +241,7 @@
             <h3 class="panel-title"><span class="icon-calendar"></span>Delivery Date</h3>
         </div>
         <div class="panel-body">
-            <p>{{delivery_date}}</p>
+            <p>{{shoot.delivery_date}}</p>
         </div>
     </div>
 
@@ -230,7 +250,7 @@
             <h3 class="panel-title"><span class="icon-money"></span>Charges</h3>
         </div>
         <div class="panel-body">
-            <p>{{charges}}</p>
+            <p>{{shoot.charges}}</p>
         </div>
     </div>
 
@@ -239,13 +259,7 @@
             <h3 class="panel-title"><span class="icon-doc-text"></span>Notes</h3>
         </div>
         <div class="panel-body">
-            <p>{{notes}}</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <a href="#contacts/{{id}}/shoots/new" class="btn btn-info">Add New Shoot</a>
+            <p>{{shoot.notes}}</p>
         </div>
     </div>
 </script>
@@ -296,6 +310,40 @@
     </form>
 </script>
 
+<script id="calendar-view"  type="text/mustache">
+    <div class="custom-calendar-wrap">
+        <div id="custom-inner" class="custom-inner">
+            <div class="custom-header clearfix">
+                <nav>
+                    <span id="custom-prev" class="custom-prev"></span>
+                    <span id="custom-next" class="custom-next"></span>
+                </nav>
+                <h2 id="custom-month" class="custom-month"></h2>
+                <h3 id="custom-year" class="custom-year"></h3>
+            </div>
+            <div id="calendar" class="fc-calendar-container"></div>
+        </div>
+    </div>
+</script>
+
+<script id="delivery-modal-view"  type="text/mustache">
+    <div class="modal fade" id="delivery-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delivery Date</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control input-lg" id="delivery-date" name="delivery_date">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success update">Update</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</script>
+
 <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -319,6 +367,7 @@
 <script src="lib/pickadate/picker.js"></script>
 <script src="lib/pickadate/picker.date.js"></script>
 <script src="lib/pickadate/picker.time.js"></script>
+<script src="lib/calendar/jquery.calendario.js"></script>
 <script src="app/components/host.js"></script>
 <script src="app/commons/loader.js"></script>
 <script src="app/commons/footer.js"></script>
@@ -328,9 +377,12 @@
 <script src="app/models/photographer.js"></script>
 <script src="app/models/contact.js"></script>
 <script src="app/models/shoot.js"></script>
+<script src="app/models/pending_delivery.js"></script>
 <script src="app/signupCtrl.js"></script>
 <script src="app/contactsCtrl.js"></script>
 <script src="app/shootsCtrl.js"></script>
+<script src="app/calendarCtrl.js"></script>
+<script src="app/deliveryCtrl.js"></script>
 <script src="app/routingCtrl.js"></script>
 <script src="app/app.js"></script>
 </body>

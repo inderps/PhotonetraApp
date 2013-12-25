@@ -31,9 +31,27 @@ var ShootsCtrl = can.Control.extend({
             $(".title").html("<span class='icon-glass'></span> " + shoot.shoot_type);
             $("#back").show();
 
-            var shootView = can.view("#shoot-view", shoot);
+            var show_delivery = false;
+
+            if (new Date(shoot.shoot_unformatted_date) < new Date()){
+                show_delivery = true;
+            }
+
+            var shootView = can.view("#shoot-view", {shoot: shoot,
+                                                     show_delivery: show_delivery});
             _this.element.html(shootView);
             Footer.create(_this.element, "#shoot-footer", null);
+
+            if(show_delivery){
+                var deliveryModal = can.view("#delivery-modal-view");
+                _this.element.append(deliveryModal);
+                DateTimePicker.dateInit("#delivery-date");
+                $("#delivery-date").pickadate('picker').set('select', new Date());
+                $("#delivery-modal button.update").click(function(ev){
+                    $("#delivery-modal").modal("hide");
+                });
+            }
+
             Loader.stop();
         });
     },
@@ -94,5 +112,9 @@ var ShootsCtrl = can.Control.extend({
     ".shoots li click": function(el, ev){
         ev.preventDefault();
         window.location.hash = el.data("href");
+    },
+
+    ".delivery-button click": function(el, ev){
+        $('#delivery-modal').modal('show');
     }
 });

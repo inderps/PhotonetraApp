@@ -1,7 +1,8 @@
 var DateTimePicker = (function() {
 
     var dateInit = function(id) {
-        $(id).pickadate({
+        return $(id).pickadate({
+            container: "body",
             format: 'd mmmm, yyyy',
             formatSubmit: 'yyyy-mm-d',
             showMonthsShort: true,
@@ -11,7 +12,7 @@ var DateTimePicker = (function() {
     };
 
     var timeInit = function(id){
-        $(id).pickatime({
+        return $(id).pickatime({
             format: 'h:i A',
             interval: 30
         });
