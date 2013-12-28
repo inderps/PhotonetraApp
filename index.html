@@ -48,7 +48,7 @@
             <p class="text-left">
             <h3 class="text-main">{{shoot_date}}</h3>
             <h5><span class="icon-clock"></span>{{shoot_time_from}} to {{shoot_time_to}}</h5>
-            <span class="client-name text-info"><span class="icon-user"></span>{{contact_name}} <br/></span>
+            <span class="client-name text-info">{{event_name}} <br/></span>
             <small class="text-muted shoot-type"><span class="icon-glass"></span>{{shoot_type}}</small>
             </p>
         </li>
@@ -62,9 +62,9 @@
         <li class="list-group-item" data-href="#shoots/{{id}}/pending_delivery">
             <p class="text-left">
             <h3 class="text-danger"><span class="icon-bell-alt"></span> {{delivery_date}}</h3>
-            <h5><span class="icon-glass"></span>{{shoot_type}}</h5>
+            <h5>{{event_name}}</h5>
             <span class="text-info"><span class="icon-camera"></span> {{shoot_date}} <br/></span>
-            <small class="text-muted"><span class="icon-user"></span>{{contact_name}}</small>
+            <small class="text-muted"><span class="icon-glass"></span>{{shoot_type}}</small>
             </p>
         </li>
         {{/shoots}}
@@ -77,9 +77,9 @@
         <li class="list-group-item" data-href="#shoots/{{id}}/payments">
             <p class="text-left">
             <h3 class="text-danger"><span class="icon-dollar"></span> {{amount_due}}</h3>
-            <h5><span class="icon-glass"></span>{{shoot_type}}</h5>
+            <h5>{{event_name}}</h5>
             <span class="text-info"><span class="icon-camera"></span> {{shoot_date}} <br/></span>
-            <small class="text-muted"><span class="icon-user"></span>{{contact_name}}</small>
+            <small class="text-muted"><span class="icon-glass"></span>{{shoot_type}}</small>
             </p>
         </li>
         {{/shoots}}
@@ -89,7 +89,7 @@
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
             <div class="btn-group btn-group-justified">
-                <a href="#contacts/choose" class="btn btn-default"><span class="icon-plus"></span></a>
+                <a href="#shoots/new" class="btn btn-default"><span class="icon-plus"></span></a>
                 <a href="#shoots/upcoming" class="btn btn-default"><span class="icon-search"></span></a>
                 <a href="#shoots/all" class="btn btn-default"><span class="icon-filter"></span></a>
             </div>
@@ -110,22 +110,25 @@
 <script id="contacts-view"  type="text/mustache">
     <ul class="list-group contacts">
         {{#contacts}}
-        {{#goToShootsCreate}}
-        <li class="list-group-item" data-href="#contacts/{{id}}/shoots/new">
-        {{/goToShootsCreate}}
-        {{^goToShootsCreate}}
-        <li class="list-group-item" data-href="#contacts/{{id}}/show">
-        {{/goToShootsCreate}}
+        {{#shoot_id}}
+        <li class="list-group-item" data-href="#shoots/{{.}}/assign_contact/{{id}}">
             <h5 class="text-main"><span class="icon-user"></span> {{name}}</h5>
             <small><span class="icon-phone"></span> {{phone}}</small>
         </li>
+        {{/shoot_id}}
+        {{^shoot_id}}
+        <li class="list-group-item" data-href="#contacts/{{id}}/show">
+            <h5 class="text-main"><span class="icon-user"></span> {{name}}</h5>
+            <small><span class="icon-phone"></span> {{phone}}</small>
+        </li>
+        {{/shoot_id}}
         {{/contacts}}
     </ul>
 </script>
 
 <script id="select-contact-view"  type="text/mustache">
     <div class="form-group">
-        <button type="submit" id="choose-existing" class="btn btn-info input-lg"><span class="icon-user"></span> Choose Existing</button>
+        <button type="submit" id="choose-existing" data-href="#shoots/{{shoot_id}}/choose_contact_from_list" class="btn btn-info input-lg"><span class="icon-user"></span> Choose Existing</button>
     </div>
     <div class="form-group">
         <h3 class="or">Or</h3>
@@ -133,11 +136,15 @@
     <h2 class="text-main"><span class="icon-user"></span> New Contact</h2>
     <div class="form-area">
     </div>
-    <button type="submit" id="create-contact-to-shoot" class="btn btn-success submit input-lg">Next<span class="icon-right-open"></span></button>
+    <button type="submit" id="create-contact-to-shoot" class="btn btn-success submit input-lg"><span class="icon-plus"></span> Add</button>
 </script>
 
 <script id="shoot-form-view"  type="text/mustache">
     <form role="form" id="new-shoot-form">
+        <div class="form-group">
+            <label class="control-label" for="event-name">Event Name</label>
+            <input type="text" class="form-control input-lg" name="event_name" id="event-name" can-value="event_name" placeholder="Enter event name">
+        </div>
         <div class="form-group">
             <label class="control-label" for="shoot-type">Shoot Type</label>
             <select class="form-control input-lg" name="shoot_type" id="shoot-type" can-value="shoot_type">
@@ -233,22 +240,27 @@
     <div class="jumbotron">
       <h1 class="shoot-date">{{shoot.shoot_date}}</h1>
       <h5 class="text-muted"><span class="icon-clock"></span> {{shoot.shoot_time_from}} to {{shoot.shoot_time_to}}</h5>
+      <p>{{shoot.event_name}}</p>
       <p><span class="icon-location text"></span> {{shoot.location}}</p>
       {{#show_delivery}}
           <p class="text-center"><button class="btn btn-danger btn-lg delivery-button" role="button"><span class="icon-ok"></span> Mark Delivery</button></p>
       {{/show_delivery}}
     </div>
+    {{#contact}}
     <div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title"><span class="icon-user"></span>Contact Details</h3>
         </div>
         <div class="panel-body">
-            <h4>{{shoot.name}}</h4>
-            <h5><span class="icon-mail"></span> {{shoot.email}}</h5>
-            <a href="tel:{{phone}}"><h4><span class="icon-phone"></span> {{shoot.phone}}</h4></a>
+            <h4>{{name}}</h4>
+            <h5><span class="icon-mail"></span> {{email}}</h5>
+            <a href="tel:{{phone}}"><h4><span class="icon-phone"></span> {{phone}}</h4></a>
         </div>
     </div>
-
+    {{/contact}}
+    {{^contact}}
+    <button id="add-contact" data-href="#shoots/{{shoot.id}}/choose_contact" class='btn btn-info btn-lg'><span class="icon-user"></span>  Add a Contact</button>
+    {{/contact}}
     <div class="panel panel-warning">
         <div class="panel-heading">
             <h3 class="panel-title"><span class="icon-calendar"></span>Delivery Date</h3>

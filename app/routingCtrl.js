@@ -44,13 +44,6 @@ var RoutingCtrl = can.Control.extend({
         this.options.paymentsCtrl = new PaymentsCtrl("#payments-page", {type: "all"});
     },
 
-    "select_contacts route" : function() {
-        Loader.start();
-        $("#back").attr("href", "#contacts/choose");
-        $("#page").html("<div id='contacts-page'></div>")
-        this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all", ref: "select"});
-    },
-
     "contacts/new route" : function() {
         Loader.start();
         $("#back").attr("href", "#contacts");
@@ -65,25 +58,42 @@ var RoutingCtrl = can.Control.extend({
         this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "show", id: data.id});
     },
 
-    "contacts/:id/edit route" : function(data) {
+//    "contacts/:id/edit route" : function(data) {
+//        Loader.start();
+//        $("#back").attr("href", "#contacts/" + data.id + "/show");
+//        $("#page").html("<div id='contact-edit-page'></div>");
+//        this.options.contactsCtrl = new ContactsCtrl("#contact-edit-page", {type: "edit", id: data.id});
+//    },
+
+    "shoots/:id/choose_contact route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#contacts/" + data.id + "/show");
-        $("#page").html("<div id='contact-edit-page'></div>");
-        this.options.contactsCtrl = new ContactsCtrl("#contact-edit-page", {type: "edit", id: data.id});
+        $("#back").attr("href", "#shoots/" + data.id + "/show");
+        $("#page").html("<div id='choose-contact-page'></div>");
+        this.options.contactsCtrl = new ContactsCtrl("#choose-contact-page", {type: "choose", id: data.id});
     },
 
-    "contacts/choose route" : function() {
+    "shoots/:id/choose_contact_from_list route" : function(data) {
+        Loader.start();
+        $("#back").attr("href", "#shoots/" + data.id + "/choose_contact");
+        $("#page").html("<div id='contacts-page'></div>")
+        this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all", ref: "select", id: data.id});
+    },
+
+    "shoots/:id/assign_contact/:contact_id route" : function(data) {
         Loader.start();
         $("#back").attr("href", "#shoots/upcoming");
-        $("#page").html("<div id='choose-contact-page'></div>");
-        this.options.contactsCtrl = new ContactsCtrl("#choose-contact-page", {type: "choose"});
+        $("#page").html("<div id='shoot-show-page'></div>");
+        var _this =this;
+        Shoot.assign_contact({shoot_id: data.id, contact_id: data.contact_id}, function(response){
+            _this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
+        });
     },
 
-    "contacts/:id/shoots/new route" : function(data) {
+    "shoots/new route" : function() {
         Loader.start();
-        $("#back").attr("href", "#contacts/" + data.id + "/show");
+        $("#back").attr("href", "#shoots/upcoming");
         $("#page").html("<div id='new-shoot-page'></div>")
-        this.options.shootsCtrl = new ShootsCtrl("#new-shoot-page", {type: "new", contact_id: data.id});
+        this.options.shootsCtrl = new ShootsCtrl("#new-shoot-page", {type: "new"});
     },
 
     "shoots/:id/show  route" : function(data) {
@@ -100,10 +110,10 @@ var RoutingCtrl = can.Control.extend({
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },
 
-    "shoots/:id/payments/new  route" : function(data) {
-        Loader.start();
-        $("#back").attr("href", "#shoots/" + data.id + "/show");
-        $("#page").html("<div id='payment-new-page'></div>")
-        this.options.paymentsCtrl = new PaymentsCtrl("#payment-new-page", {type: "new", id: data.id});
-    }
+//    "shoots/:id/payments/new  route" : function(data) {
+//        Loader.start();
+//        $("#back").attr("href", "#shoots/" + data.id + "/show");
+//        $("#page").html("<div id='payment-new-page'></div>")
+//        this.options.paymentsCtrl = new PaymentsCtrl("#payment-new-page", {type: "new", id: data.id});
+//    }
 });

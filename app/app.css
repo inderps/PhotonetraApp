@@ -51,6 +51,10 @@ button {
      margin-top: 20px;
 }
 
+#add-contact{
+    margin-bottom: 30px;
+}
+
 #choose-contact-page .or{
     text-align: center;
 }

@@ -1,7 +1,7 @@
 var ShootsCtrl = can.Control.extend({
     init: function( element, options ) {
         if(options.type == "new"){
-            this.new(options.contact_id);
+            this.new();
         }
         else if(options.type == "show"){
             this.show(options.id);
@@ -55,7 +55,7 @@ var ShootsCtrl = can.Control.extend({
             show_delivery = true;
         }
 
-        var shootView = can.view("#shoot-view", {shoot: shoot, show_delivery: show_delivery});
+        var shootView = can.view("#shoot-view", {shoot: shoot, show_delivery: show_delivery, contact: shoot.contact});
         this.element.html(shootView);
         Footer.create(this.element, "#shoot-footer", null);
     },
@@ -64,12 +64,13 @@ var ShootsCtrl = can.Control.extend({
         return (new Date(shoot.shoot_unformatted_date) < new Date());
     },
 
-    new: function(contactId) {
+    new: function() {
         $(".title").html("<span class='icon-camera'></span> Create New Shoot");
         $("#back").show();
 
         this.shoot = new can.Map({
-            contact_id: contactId,
+            photographer_id: window.photographerId,
+            event_name: "",
             shoot_type: "wedding",
             shoot_date: "",
             shoot_time_from: "",
@@ -85,6 +86,9 @@ var ShootsCtrl = can.Control.extend({
         this.element.find("form").append("<button id='create-shoot' class='btn btn-success btn-lg submit'><span class='icon-plus'></span> Create</button>")
 
         Validate.setup("#new-shoot-form", {
+            event_name: {
+                required: true
+            },
             shoot_date: {
                 required: true
             },
@@ -115,6 +119,11 @@ var ShootsCtrl = can.Control.extend({
                 MessageModal.show("New shoot created successfully", "#shoots/" + response.id + "/show");
             });
         }
+    },
+
+    "#add-contact click": function(el, ev){
+        ev.preventDefault();
+        window.location.hash = el.data("href");
     },
 
     ".shoots li click": function(el, ev){

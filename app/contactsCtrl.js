@@ -4,10 +4,10 @@ var ContactsCtrl = can.Control.extend({
             this.new();
         }
         else if(options.type == "choose"){
-            this.choose();
+            this.choose(options.id);
         }
         else if(options.type == "all"){
-            this.all(options.ref);
+            this.all(options.ref, options.id);
         }
         else if(options.type == "show"){
             this.show(options.id);
@@ -30,21 +30,18 @@ var ContactsCtrl = can.Control.extend({
         });
     },
 
-    all: function(ref){
+    all: function(ref, shoot_id){
         var _this = this;
         $(".title").html("<span class='icon-user'></span> Contacts");
         $("#back").hide();
 
-        var goToShootsCreate = false;
-
         if(ref){
-            goToShootsCreate = true;
             $("#back").show();
         }
 
         Contact.findAll({id: window.photographerId}, function(contacts){
 
-            var contactsView = can.view("#contacts-view", {contacts: contacts, goToShootsCreate: goToShootsCreate});
+            var contactsView = can.view("#contacts-view", {contacts: contacts, shoot_id: shoot_id});
             _this.element.html(contactsView);
 
             Footer.create(_this.element, "#contacts-footer", null);
@@ -105,14 +102,15 @@ var ContactsCtrl = can.Control.extend({
         });
     },
 
-    choose: function(){
+    choose: function(shoot_id){
         $(".title").html("<span class='icon-user'></span> Choose Contact");
         $("#back").show();
 
-        var selectContactView = can.view("#select-contact-view");
+        var selectContactView = can.view("#select-contact-view", {shoot_id: shoot_id});
         this.element.html(selectContactView);
 
         this.contact = new can.Map({
+            shoot_id: shoot_id,
             photographer_id: window.photographerId,
             name: "",
             email: "",
@@ -158,17 +156,18 @@ var ContactsCtrl = can.Control.extend({
 
     "#create-contact-to-shoot click": function(el, ev){
         ev.preventDefault();
+        var _this = this;
 
         if(this.element.find("form").valid()){
             Contact.create(this.contact.attr(), function(response){
-                window.location.hash = "#contacts/" + response.id + "/shoots/new";
+                window.location.hash = "#shoots/" + _this.contact.attr().shoot_id + "/assign_contact/" + response.id;
             });
         }
     },
 
     "#choose-existing click": function(el, ev){
         ev.preventDefault();
-        window.location.hash = "#select_contacts";
+        window.location.hash = el.data("href");
     },
 
     ".contacts li click": function(el, ev){
