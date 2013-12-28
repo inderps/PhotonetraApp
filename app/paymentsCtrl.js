@@ -4,30 +4,22 @@ var PaymentsCtrl = can.Control.extend({
             this.new(options.id);
         }
         else if(options.type == "all"){
-            this.all(options.ref);
+            this.all();
         }
     },
 
-    all: function(ref){
-//        var _this = this;
-//        $(".title").html("<span class='icon-user'></span> Contacts");
-//        $("#back").hide();
-//
-//        var goToShootsCreate = false;
-//
-//        if(ref){
-//            goToShootsCreate = true;
-//            $("#back").show();
-//        }
-//
-//        Contact.findAll({id: window.photographerId}, function(contacts){
-//
-//            var contactsView = can.view("#contacts-view", {contacts: contacts, goToShootsCreate: goToShootsCreate});
-//            _this.element.html(contactsView);
-//
-//            Footer.create(_this.element, "#contacts-footer", null);
-//            Loader.stop();
-//        });
+    all: function(){
+        var _this = this;
+        $(".title").html("<span class='icon-money'></span> Pending Payments");
+        $("#back").hide();
+
+
+        Payment.findAll({id: window.photographerId}, function(shoots){
+
+            var payments = can.view("#payments-view", {shoots: shoots});
+            _this.element.html(payments);
+            Loader.stop();
+        });
     },
 
     new: function(shoot_id){

@@ -32,10 +32,16 @@ var RoutingCtrl = can.Control.extend({
         this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all"});
     },
 
-    "delivery route" : function() {
+    "deliveries route" : function() {
         Loader.start();
         $("#page").html("<div id='delivery-page'></div>")
         this.options.deliveryCtrl = new DeliveryCtrl("#delivery-page");
+    },
+
+    "payments route" : function() {
+        Loader.start();
+        $("#page").html("<div id='payments-page'></div>")
+        this.options.paymentsCtrl = new PaymentsCtrl("#payments-page", {type: "all"});
     },
 
     "select_contacts route" : function() {
@@ -89,7 +95,7 @@ var RoutingCtrl = can.Control.extend({
 
     "shoots/:id/pending_delivery  route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#delivery");
+        $("#back").attr("href", "#deliveries");
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },

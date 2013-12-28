@@ -34,10 +34,10 @@
 <div id="menu-list" style="display: none;">
     <ul>
         <li><a href="#shoots/upcoming">Shoots</a></li>
-        <li><a href="#contacts">Clients</a></li>
-        <li><a href="#delivery">Delivery</a></li>
-        <li><a href="#">Payments</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="#contacts">Contacts</a></li>
+        <li><a href="#deliveries">Deliveries</a></li>
+        <li><a href="#payments">Payments</a></li>
+        <li><a href="#logout">Logout</a></li>
     </ul>
 </div>
 
@@ -71,6 +71,20 @@
     </ul>
 </script>
 
+<script id="payments-view"  type="text/mustache">
+    <ul class="list-group shoots">
+        {{#shoots}}
+        <li class="list-group-item" data-href="#shoots/{{id}}/payments">
+            <p class="text-left">
+            <h3 class="text-danger"><span class="icon-dollar"></span> {{amount_due}}</h3>
+            <h5><span class="icon-glass"></span>{{shoot_type}}</h5>
+            <span class="text-info"><span class="icon-camera"></span> {{shoot_date}} <br/></span>
+            <small class="text-muted"><span class="icon-user"></span>{{contact_name}}</small>
+            </p>
+        </li>
+        {{/shoots}}
+    </ul>
+</script>
 <script id="shoots-footer"  type="text/mustache">
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
@@ -82,7 +96,6 @@
         </div>
     </nav>
 </script>
-
 <script id="contacts-footer"  type="text/mustache">
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
