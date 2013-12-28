@@ -92,5 +92,12 @@ var RoutingCtrl = can.Control.extend({
         $("#back").attr("href", "#delivery");
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
+    },
+
+    "shoots/:id/payments/new  route" : function(data) {
+        Loader.start();
+        $("#back").attr("href", "#shoots/" + data.id + "/show");
+        $("#page").html("<div id='payment-new-page'></div>")
+        this.options.paymentsCtrl = new PaymentsCtrl("#payment-new-page", {type: "new", id: data.id});
     }
 });

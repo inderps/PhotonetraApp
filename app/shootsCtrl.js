@@ -28,32 +28,40 @@ var ShootsCtrl = can.Control.extend({
     show: function(id) {
         var _this = this;
         Shoot.findOne({id: id}, function(shoot){
-            $(".title").html("<span class='icon-glass'></span> " + shoot.shoot_type);
-            $("#back").show();
-
-            var show_delivery = false;
-
-            if (new Date(shoot.shoot_unformatted_date) < new Date()){
-                show_delivery = true;
-            }
-
-            var shootView = can.view("#shoot-view", {shoot: shoot,
-                                                     show_delivery: show_delivery});
-            _this.element.html(shootView);
-            Footer.create(_this.element, "#shoot-footer", null);
-
-            if(show_delivery){
+            _this.showShoot(shoot);
+            if(_this.showDelivery(shoot)){
                 var deliveryModal = can.view("#delivery-modal-view");
                 _this.element.append(deliveryModal);
                 DateTimePicker.dateInit("#delivery-date");
                 $("#delivery-date").pickadate('picker').set('select', new Date());
                 $("#delivery-modal button.update").click(function(ev){
-                    $("#delivery-modal").modal("hide");
+                    PendingDelivery.create({id: id, delivered_flag_date: $("#delivery-date").val()}, function(shoot){
+                        $("#delivery-modal").modal("hide");
+                        _this.showShoot(shoot);
+                    });
                 });
             }
-
             Loader.stop();
         });
+    },
+
+    showShoot: function(shoot){
+        $(".title").html("<span class='icon-glass'></span> " + shoot.shoot_type);
+        $("#back").show();
+
+        var show_delivery = false;
+
+        if (this.showDelivery(shoot)){
+            show_delivery = true;
+        }
+
+        var shootView = can.view("#shoot-view", {shoot: shoot, show_delivery: show_delivery});
+        this.element.html(shootView);
+        Footer.create(this.element, "#shoot-footer", null);
+    },
+
+    showDelivery: function(shoot){
+        return (new Date(shoot.shoot_unformatted_date) < new Date());
     },
 
     new: function(contactId) {

@@ -310,6 +310,33 @@
     </form>
 </script>
 
+<script id="payment-form-view"  type="text/mustache">
+    <div class="jumbotron">
+      <h1 class="shoot-date">{{shoot.shoot_date}}</h1>
+      <h5 class="text-muted"><span class="icon-glass"></span> {{shoot.shoot_type}}</h5>
+      <p><span class="icon-user"></span> {{shoot.name}}</p>
+      <p><a href="tel:{{shoot.phone}}"><span class="icon-phone"></span> {{shoot.phone}}</a></p>
+    </div>
+    <form role="form" id="new-payment-form">
+        <div class="form-group">
+            <h3 class="or">New Transaction</h3>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="payment-date">Payment Date</label>
+            <input type="text" class="form-control input-lg" name="payment_date" id="payment-date" can-value="payment.payment_date">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="amount">Amount</label>
+            <input type="number" class="form-control input-lg" name="amount" id="amount" can-value="payment.amount" placeholder="Enter Amount">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="comment">Comment</label>
+             <textarea class="form-control input-lg" id="comment" name="comment" can-value="payment.comment" placeholder="Enter Comment (optional)"></textarea>
+        </div>
+        <button type="submit" id="payment-submit" class="btn btn-success submit btn-lg"><span class='icon-dollar'></span> Create</button>
+    </form>
+</script>
+
 <script id="calendar-view"  type="text/mustache">
     <div class="custom-calendar-wrap">
         <div id="custom-inner" class="custom-inner">
@@ -378,11 +405,13 @@
 <script src="app/models/contact.js"></script>
 <script src="app/models/shoot.js"></script>
 <script src="app/models/pending_delivery.js"></script>
+<script src="app/models/payment.js"></script>
 <script src="app/signupCtrl.js"></script>
 <script src="app/contactsCtrl.js"></script>
 <script src="app/shootsCtrl.js"></script>
 <script src="app/calendarCtrl.js"></script>
 <script src="app/deliveryCtrl.js"></script>
+<script src="app/paymentsCtrl.js"></script>
 <script src="app/routingCtrl.js"></script>
 <script src="app/app.js"></script>
 </body>
