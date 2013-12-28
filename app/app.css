@@ -94,6 +94,18 @@ label.error{
 #shoot-show-page .shoot-date{
     color: #FFBF00;
 }
+#shoot-show-page .panel-heading{
+    height: 38px;
+}
+
+#shoot-show-page .add-payment, #shoot-show-page .edit-note{
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    padding: 0;
+    margin-right: -10px;
+    margin-top: -5px;
+}
 
 /*button, input, select, textarea {*/
     /*height: 45px;*/

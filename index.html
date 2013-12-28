@@ -254,17 +254,50 @@
         </div>
     </div>
 
-    <div class="panel panel-success">
+    <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title"><span class="icon-doc-text"></span>Notes</h3>
+            <h3 class="panel-title pull-left"><span class="icon-doc-text"></span>Notes</h3>
+            <button class="btn btn-primary pull-right edit-note"><span class="icon-pencil"></span></button>
         </div>
         <div class="panel-body">
             <p>{{shoot.notes}}</p>
         </div>
     </div>
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title pull-left">
+            <span class="icon-dollar"></span>Payments
+            </h3>
+            <button class="btn btn-success pull-right add-payment" data-href="#shoots/{{shoot.id}}/payments/new"><span class="icon-plus"></span></button>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Comment</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#shoot.payments}}
+                    <tr>
+                        <td>{{payment_date}}</td>
+                        <td>{{amount}}</td>
+                        <td>{{comment}}</td>
+                    </tr>
+                {{/shoot.payments}}
+                {{^shoot.payments}}
+                    <tr>
+                        <td colspan="3" class="text-center"><em>No Payments made</em></td>
+                    </tr>
+                {{/shoot.payments}}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </script>
-
-
 
 <script id="shoot-footer"  type="text/mustache">
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">

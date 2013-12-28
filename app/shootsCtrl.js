@@ -124,5 +124,10 @@ var ShootsCtrl = can.Control.extend({
 
     ".delivery-button click": function(el, ev){
         $('#delivery-modal').modal('show');
-    }
+    },
+
+    ".add-payment click": function(el, ev){
+        ev.preventDefault();
+        window.location.hash = el.data("href");
+    },
 });
