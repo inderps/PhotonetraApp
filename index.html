@@ -217,9 +217,36 @@
             <h4>{{email}}</h4>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <a href="#contacts/{{id}}/shoots/new" class="btn btn-info"><span class='icon-camera'></span> Add New Shoot</a>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span class="icon-camera"></span>Shoots
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Event Name</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#shoots}}
+                <tr>
+                    <td>{{shoot_date}}</td>
+                    <td>{{event_name}}</td>
+                    <td><a href="#shoots/{{id}}/show" class="btn btn-default"><span class='icon-pencil'></span></a></td>
+                </tr>
+                {{/shoots}}
+                {{^shoots}}
+                <tr>
+                    <td colspan="3" class="text-center"><em>No Shoots</em></td>
+                </tr>
+                {{/shoots}}
+                </tbody>
+            </table>
         </div>
     </div>
 </script>
@@ -323,6 +350,7 @@
         </div>
     </div>
 </script>
+
 
 <script id="shoot-footer"  type="text/mustache">
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
