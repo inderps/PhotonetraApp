@@ -20,7 +20,7 @@ var ShootsCtrl = can.Control.extend({
             var shootsView = can.view("#shoots-view", {shoots: shoots});
             _this.element.html(shootsView);
             Footer.create(_this.element, "#shoots-footer", null);
-
+            $("#filter-modal").modal("hide");
             Loader.stop();
         });
     },
@@ -139,4 +139,22 @@ var ShootsCtrl = can.Control.extend({
         ev.preventDefault();
         window.location.hash = el.data("href");
     },
+
+    ".filter-shoots click": function(el, ev){
+        ev.preventDefault();
+        $("#filter-modal").modal("show");
+
+        $("a.filter-action").removeClass("active");
+        $("a.filter-action").each(function(index, element){
+            if($(element).attr("href")==window.location.hash){
+                $(element).addClass("active");
+            }
+        });
+    },
+
+    "a.filter-action click": function(el, ev){
+        ev.preventDefault();
+        $("#filter-modal").modal("hide");
+        window.location.hash = el.attr("href");
+    }
 });

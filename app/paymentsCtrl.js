@@ -64,8 +64,8 @@ var PaymentsCtrl = can.Control.extend({
         }
     },
 
-    ".contacts li click": function(el, ev){
-//        ev.preventDefault();
-//        window.location.hash = el.data("href");
+    ".shoots li click": function(el, ev){
+        ev.preventDefault();
+        window.location.hash = el.data("href");
     }
 });

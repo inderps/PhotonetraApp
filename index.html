@@ -74,9 +74,9 @@
 <script id="payments-view"  type="text/mustache">
     <ul class="list-group shoots">
         {{#shoots}}
-        <li class="list-group-item" data-href="#shoots/{{id}}/payments">
+        <li class="list-group-item" data-href="#shoots/{{id}}/payment">
             <p class="text-left">
-            <h3 class="text-danger"><span class="icon-dollar"></span> {{amount_due}}</h3>
+            <h3 class="text-success"><span class="icon-dollar"></span> {{amount_due}}</h3>
             <h5>{{event_name}}</h5>
             <span class="text-info"><span class="icon-camera"></span> {{shoot_date}} <br/></span>
             <small class="text-muted"><span class="icon-glass"></span>{{shoot_type}}</small>
@@ -91,7 +91,7 @@
             <div class="btn-group btn-group-justified">
                 <a href="#shoots/new" class="btn btn-default"><span class="icon-plus"></span></a>
                 <a href="#shoots/upcoming" class="btn btn-default"><span class="icon-search"></span></a>
-                <a href="#shoots/all" class="btn btn-default"><span class="icon-filter"></span></a>
+                <a href="#" class="btn btn-default filter-shoots"><span class="icon-filter"></span></a>
             </div>
         </div>
     </nav>
@@ -371,9 +371,8 @@
 <script id="payment-form-view"  type="text/mustache">
     <div class="jumbotron">
       <h1 class="shoot-date">{{shoot.shoot_date}}</h1>
+      <p>{{shoot.event_name}}</p>
       <h5 class="text-muted"><span class="icon-glass"></span> {{shoot.shoot_type}}</h5>
-      <p><span class="icon-user"></span> {{shoot.name}}</p>
-      <p><a href="tel:{{shoot.phone}}"><span class="icon-phone"></span> {{shoot.phone}}</a></p>
     </div>
     <form role="form" id="new-payment-form">
         <div class="form-group">
@@ -441,6 +440,23 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" id="filter-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Filter Shoots</h4>
+            </div>
+            <div class="modal-body">
+                <div class="btn-group btn-group-justified">
+                    <a href="#!shoots/upcoming" class="btn btn-default filter-action">Upcoming</a>
+                    <a href="#!shoots/all" class="btn btn-default filter-action">All</a>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/jquery/jquery.serializeJSON.js"></script>
