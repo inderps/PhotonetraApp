@@ -13,6 +13,7 @@ var RoutingCtrl = can.Control.extend({
 
     "login route": function(){
         Loader.start();
+//        $("body").addClass("login-cover")
         $("#page").html("<div id='login-page'></div>")
         this.options.authCtrl = new AuthCtrl("#login-page", {page: "login"});
     },
