@@ -27,7 +27,7 @@ var PaymentsCtrl = can.Control.extend({
         $("#back").show();
         var _this=this;
 
-        Shoot.findOne({id: shoot_id}, function(shoot){
+        Shoot.getOne({id: shoot_id}, function(shoot){
             _this.payment = new can.Map({
                 shoot_id: shoot_id,
                 payment_date: "",

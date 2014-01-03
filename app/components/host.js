@@ -2,10 +2,10 @@ var host = {
     get: function(){
         var server;
         if(window.location.host.indexOf("localhost") == -1){
-            server = "http://photonetra_service.ap01.aws.af.cm/";
+            server = "http://photonetra-api.herokuapp.com/";
         }
         else{
-            server = "http://localhost:4567/"
+            server = "http://photonetra-api.herokuapp.com/"
         }
         return server;
     }

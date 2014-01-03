@@ -13,7 +13,19 @@ var ShootsCtrl = can.Control.extend({
 
     all: function(filter) {
         var _this = this;
-        Shoot.findAll({id: window.photographerId, filter: filter}, function(shoots){
+        Shoot.getAll({id: window.photographerId}, function(shoots){
+            if(filter=="upcoming"){
+                var upcomingShoots = [];
+                for(var i=0; i<shoots.length;i++){
+                    if(new Date(shoots[i].shoot_date) < new Date()){
+                    }
+                    else{
+                        upcomingShoots.push(shoots[i]);
+                    }
+                }
+                shoots = upcomingShoots;
+            }
+
             $(".title").html("<span class='icon-camera'></span> Shoots");
             $("#back").hide();
 
@@ -27,7 +39,7 @@ var ShootsCtrl = can.Control.extend({
 
     show: function(id) {
         var _this = this;
-        Shoot.findOne({id: id}, function(shoot){
+        Shoot.getOne({id: id}, function(shoot){
             _this.showShoot(shoot);
             if(_this.showDelivery(shoot)){
                 DateTimePicker.dateInit("#delivery-date");

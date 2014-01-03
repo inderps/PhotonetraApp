@@ -90,10 +90,10 @@ var AuthCtrl = can.Control.extend({
             var formData = this.element.find("form").serializeJSON();
             Loader.start();
             Photographer.login(formData, function(data){
+                $("#titlebar").show();
                 Loader.stop();
                 if(data.id){
-                    window.photographerId = data.id;
-                    window.token = data.token;
+                    Authentication.create(data);
                     window.location.hash = "#";
 
                 }else{
