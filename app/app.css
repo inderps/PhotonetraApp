@@ -8,6 +8,14 @@
     position: absolute;
 }
 
+.footer{
+    min-height: 0;
+}
+
+#contacts-page .contacts li{
+    height: 85px;
+}
+
 .login-cover{
     background-image: url("/img/photonetra_cover.png");
     background-size: cover;
