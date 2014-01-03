@@ -54,7 +54,7 @@ var ContactsCtrl = can.Control.extend({
         $("#back").show();
 
         this.contact = new can.Map({
-            photographer_id: window.photographerId,
+            photographer_id: Authentication.getUser().id,
             name: "",
             email: "",
             phone: ""
@@ -88,7 +88,7 @@ var ContactsCtrl = can.Control.extend({
             $("#back").show();
 
             _this.contact = new can.Map({
-                photographer_id: window.photographerId,
+                photographer_id: Authentication.getUser().id,
                 id: contact.id,
                 name: contact.name,
                 email: contact.email,
@@ -111,7 +111,7 @@ var ContactsCtrl = can.Control.extend({
 
         this.contact = new can.Map({
             shoot_id: shoot_id,
-            photographer_id: window.photographerId,
+            photographer_id: Authentication.getUser().id,
             name: "",
             email: "",
             phone: ""

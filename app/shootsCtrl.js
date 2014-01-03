@@ -81,7 +81,7 @@ var ShootsCtrl = can.Control.extend({
         $("#back").show();
 
         this.shoot = new can.Map({
-            photographer_id: window.photographerId,
+            photographer_id: Authentication.getUser().id,
             event_name: "",
             shoot_type: "wedding",
             shoot_date: "",

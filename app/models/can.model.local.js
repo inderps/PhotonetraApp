@@ -1,6 +1,6 @@
 CachedModel= can.Model.extend({
     baseGet: function(url, callback){
-        var user = Authentication.check();
+        var user = Authentication.getUser();
         if(user){
             return $.ajax({
                 url: host.get() + url,
@@ -13,7 +13,7 @@ CachedModel= can.Model.extend({
     },
 
     baseGetAll: function(resource, callback){
-        var user = Authentication.check();
+        var user = Authentication.getUser();
         if(user){
             return $.ajax({
                 url: host.get() + "photographers/" + user.id + "/" + resource,

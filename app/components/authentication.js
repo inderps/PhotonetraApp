@@ -1,5 +1,5 @@
 var Authentication = {
-    check: function(){
+    getUser: function(){
         var user = store.get("photonetra_user");
         if(user){
             return user;
