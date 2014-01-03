@@ -14,5 +14,9 @@ var Authentication = {
             id: data.id,
             token: data.token
         });
+    },
+
+    clear: function(){
+        store.remove('photonetra_user');
     }
 }

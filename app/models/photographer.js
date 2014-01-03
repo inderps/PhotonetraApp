@@ -9,5 +9,15 @@ Photographer = can.Model.extend({
         }).done(function(data){
                 callback(data);
          });
+    },
+    logout:  function(attrs, callback){
+        return $.ajax({
+            url: host.get() + "/photographers/" + attrs.id + "/logout",
+            type: 'post',
+            dataType: 'json',
+            data: attrs
+        }).done(function(data){
+                callback(data);
+            });
     }
 },{});

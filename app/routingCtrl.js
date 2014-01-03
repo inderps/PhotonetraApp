@@ -13,15 +13,17 @@ var RoutingCtrl = can.Control.extend({
 
     "login route": function(){
         Loader.start();
-//        $("body").addClass("login-cover")
+        $("body").addClass("login-cover")
         $("#page").html("<div id='login-page'></div>")
         this.options.authCtrl = new AuthCtrl("#login-page", {page: "login"});
     },
 
     "logout route": function(){
         Loader.start();
-//        $("#page").html("<div id='logout-page'></div>")
-//        this.options.authCtrl = new AuthCtrl("#logout-page", {page: "login"});
+        Photographer.logout({id: Authentication.getUser().id}, function(data){
+            Authentication.clear();
+            window.location.hash = "#!login";
+        });
     },
 
     "signup route": function(){

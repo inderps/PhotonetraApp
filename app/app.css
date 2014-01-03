@@ -8,7 +8,7 @@
     position: absolute;
 }
 
-body{
+.login-cover{
     background-image: url("/img/photonetra_cover.png");
     background-size: cover;
     background-repeat: no-repeat;

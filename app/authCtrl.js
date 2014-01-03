@@ -92,6 +92,8 @@ var AuthCtrl = can.Control.extend({
             Photographer.login(formData, function(data){
                 $("#titlebar").show();
                 Loader.stop();
+                $("body").addClass("login-cover")
+
                 if(data.id){
                     Authentication.create(data);
                     window.location.hash = "#";

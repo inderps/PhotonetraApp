@@ -2,9 +2,9 @@ var Loader = (function() {
 
     var start = function() {
         $.sidr('close', 'main-menu');
-//        if($("body").hasClass("login-cover")){
-//            $("body").removeClass("login-cover");
-//        }
+        if($("body").hasClass("login-cover")){
+            $("body").removeClass("login-cover");
+        }
 
         var waitLoaderDOM = '<div id="wait-loader-backdrop"><div class="spinner-new"></div></div>';
         this.stop();
