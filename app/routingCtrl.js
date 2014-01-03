@@ -8,10 +8,16 @@ var RoutingCtrl = can.Control.extend({
         this.options.calendarCtrl = new CalendarCtrl("#calendar-page");
     },
 
+    "login route": function(){
+        Loader.start();
+        $("#page").html("<div id='login-page'></div>")
+        this.options.authCtrl = new AuthCtrl("#login-page", {page: "login"});
+    },
+
     "signup route": function(){
         Loader.start();
         $("#page").html("<div id='signup-page'></div>")
-        this.options.signupCtrl = new SignupCtrl("#signup-page");
+        this.options.authCtrl = new AuthCtrl("#signup-page", {page: "signup"});
     },
 
     "shoots/upcoming route" : function() {

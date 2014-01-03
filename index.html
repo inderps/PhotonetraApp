@@ -16,7 +16,7 @@
 <link href="app/app.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation" id="titlebar">
     <span class="title">Shoots</span>
     <a href="#" id="back" class="btn btn-default navbar-btn"><span class="icon-left"></span></a>
     <a id="menu" href="#menu-list"></a>
@@ -40,6 +40,20 @@
         <li><a href="#logout">Logout</a></li>
     </ul>
 </div>
+
+<script id="login-view"  type="text/mustache">
+<form role="form" id="login-form">
+    <div class="form-group">
+        <input type="email" class="form-control input-lg" id="email" name="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-success btn-lg login">Login</button>
+</form>
+
+</script>
+
 
 <script id="shoots-view"  type="text/mustache">
     <ul class="list-group shoots">
@@ -508,7 +522,7 @@
 <script src="app/models/shoot.js"></script>
 <script src="app/models/pending_delivery.js"></script>
 <script src="app/models/payment.js"></script>
-<script src="app/signupCtrl.js"></script>
+<script src="app/authCtrl.js"></script>
 <script src="app/contactsCtrl.js"></script>
 <script src="app/shootsCtrl.js"></script>
 <script src="app/calendarCtrl.js"></script>

@@ -111,6 +111,15 @@ label.error{
     margin-top: -5px;
 }
 
+#login-form{
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+}
+
 /*button, input, select, textarea {*/
     /*height: 45px;*/
 /*}*/
