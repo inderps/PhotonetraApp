@@ -1,7 +1,11 @@
-Contact = can.Model.extend({
+Contact = CachedModel({
     create:  "POST " + host.get() + "photographers/{photographer_id}/contacts",
-    findOne: "GET " + host.get() + "contacts/{id}/",
-    findAll: "GET " + host.get() + "photographers/{id}/contacts",
+    getOne: function(attrs, callback){
+        this.baseGet("contacts/" + attrs.id + "/", callback);
+    },
+    getAll: function(callback){
+        this.baseGetAll("contacts", callback);
+    },
     update:  function(contact, callback){
         return $.ajax({
             url: host.get() + "contacts/" + contact.id + "/",

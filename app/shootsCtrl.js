@@ -13,7 +13,7 @@ var ShootsCtrl = can.Control.extend({
 
     all: function(filter) {
         var _this = this;
-        Shoot.getAll({id: window.photographerId}, function(shoots){
+        Shoot.getAll(function(shoots){
             if(filter=="upcoming"){
                 var upcomingShoots = [];
                 for(var i=0; i<shoots.length;i++){

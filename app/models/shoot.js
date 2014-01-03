@@ -1,26 +1,10 @@
-Shoot = can.Model.extend({
+Shoot = CachedModel({
     create:  "POST " + host.get() + "photographers/{photographer_id}/shoots",
     getOne: function(attrs, callback){
-        if(Authentication.check()){
-            return $.ajax({
-                url: host.get() + "shoots/" + attrs.id + "/",
-                type: 'get',
-                dataType: 'json'
-            }).done(function(data){
-                    callback(data);
-                });
-        }
+        this.baseGet("shoots/" + attrs.id + "/", callback);
     },
-    getAll: function(attrs, callback){
-        if(Authentication.check()){
-            return $.ajax({
-                url: host.get() + "photographers/" + attrs.id + "/shoots",
-                type: 'get',
-                dataType: 'json'
-            }).done(function(data){
-                    callback(data);
-            });
-        }
+    getAll: function(callback){
+        this.baseGetAll("shoots", callback);
     },
     assign_contact:  function(attrs, callback){
         return $.ajax({

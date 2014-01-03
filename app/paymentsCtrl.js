@@ -14,7 +14,7 @@ var PaymentsCtrl = can.Control.extend({
         $("#back").hide();
 
 
-        Payment.findAll({id: window.photographerId}, function(shoots){
+        Payment.getAll(function(shoots){
 
             var payments = can.view("#payments-view", {shoots: shoots});
             _this.element.html(payments);

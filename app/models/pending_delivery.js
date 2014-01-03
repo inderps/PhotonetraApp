@@ -1,4 +1,6 @@
-PendingDelivery = can.Model.extend({
+PendingDelivery = CachedModel({
     create:  "POST " + host.get() + "shoots/{id}/mark_delivery",
-    findAll:  "GET " + host.get() + "photographers/{id}/pending_deliveries"
+    getAll: function(callback){
+        this.baseGetAll("pending_deliveries", callback);
+    }
 },{});

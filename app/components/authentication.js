@@ -2,7 +2,7 @@ var Authentication = {
     check: function(){
         var user = store.get("photonetra_user");
         if(user){
-            return true;
+            return user;
         }else{
             window.location.hash = "#!login"
             return false;

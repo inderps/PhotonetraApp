@@ -1,4 +1,6 @@
-Payment = can.Model.extend({
+Payment = CachedModel({
     create:  "POST " + host.get() + "shoots/{shoot_id}/payments",
-    findAll: "GET " + host.get() + "photographers/{id}/payments"
+    getAll: function(callback){
+        this.baseGetAll("payments", callback);
+    }
 },{});

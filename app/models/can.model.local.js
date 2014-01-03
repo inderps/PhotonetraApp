@@ -1,4 +1,30 @@
 CachedModel= can.Model.extend({
+    baseGet: function(url, callback){
+        var user = Authentication.check();
+        if(user){
+            return $.ajax({
+                url: host.get() + url,
+                type: 'get',
+                dataType: 'json'
+            }).done(function(data){
+                    callback(data);
+            });
+        }
+    },
+
+    baseGetAll: function(resource, callback){
+        var user = Authentication.check();
+        if(user){
+            return $.ajax({
+                url: host.get() + "photographers/" + user.id + "/" + resource,
+                type: 'get',
+                dataType: 'json'
+            }).done(function(data){
+                    callback(data);
+                });
+        }
+    },
+
     getLocal: function(url){
         return store.get(window.specialistHref + url);
     },

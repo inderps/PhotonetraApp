@@ -19,7 +19,7 @@ var ContactsCtrl = can.Control.extend({
 
     show: function(id){
         var _this = this;
-        Contact.findOne({id: id}, function(contact){
+        Contact.getOne({id: id}, function(contact){
             $(".title").html("<span class='icon-user'></span> " + contact.name);
             $("#back").show();
 
@@ -39,7 +39,7 @@ var ContactsCtrl = can.Control.extend({
             $("#back").show();
         }
 
-        Contact.findAll({id: window.photographerId}, function(contacts){
+        Contact.getAll(function(contacts){
 
             var contactsView = can.view("#contacts-view", {contacts: contacts, shoot_id: shoot_id});
             _this.element.html(contactsView);
@@ -83,7 +83,7 @@ var ContactsCtrl = can.Control.extend({
 
     edit: function(id){
         var _this = this;
-        Contact.findOne({id: id}, function(contact){
+        Contact.getOne({id: id}, function(contact){
             $(".title").html("<span class='icon-user'></span> " + contact.name);
             $("#back").show();
 

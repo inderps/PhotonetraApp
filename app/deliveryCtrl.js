@@ -1,7 +1,7 @@
 var DeliveryCtrl = can.Control.extend({
     init: function( element, options ) {
         var _this = this;
-        PendingDelivery.findAll({id: window.photographerId}, function(shoots){
+        PendingDelivery.getAll(function(shoots){
             $(".title").html("<span class='icon-truck'></span> Pending Deliveries");
             $("#back").hide();
             var deliveryView = can.view("#delivery-view", {shoots: shoots});
