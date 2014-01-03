@@ -30,8 +30,6 @@ var ShootsCtrl = can.Control.extend({
         Shoot.findOne({id: id}, function(shoot){
             _this.showShoot(shoot);
             if(_this.showDelivery(shoot)){
-                var deliveryModal = can.view("#delivery-modal-view");
-                _this.element.append(deliveryModal);
                 DateTimePicker.dateInit("#delivery-date");
                 $("#delivery-date").pickadate('picker').set('select', new Date());
                 $("#delivery-modal button.update").click(function(ev){
@@ -61,7 +59,7 @@ var ShootsCtrl = can.Control.extend({
     },
 
     showDelivery: function(shoot){
-        return (new Date(shoot.shoot_unformatted_date) < new Date());
+        return !shoot.delivered && (new Date(shoot.shoot_unformatted_date) < new Date());
     },
 
     new: function() {

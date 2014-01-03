@@ -438,24 +438,6 @@
     </div>
 </script>
 
-<script id="delivery-modal-view"  type="text/mustache">
-    <div class="modal fade" id="delivery-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delivery Date</h4>
-                </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control input-lg" id="delivery-date" name="delivery_date">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success update">Update</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-</script>
-
 <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -485,6 +467,22 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div class="modal fade" id="delivery-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delivery Date</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control input-lg" id="delivery-date" name="delivery_date">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success update">Update</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/jquery/jquery.serializeJSON.js"></script>
@@ -497,6 +495,8 @@
 <script src="lib/pickadate/picker.date.js"></script>
 <script src="lib/pickadate/picker.time.js"></script>
 <script src="lib/calendar/jquery.calendario.js"></script>
+<script src="lib/storejs/store.min.js"></script>
+<script src="app/models/can.model.local.js"></script>
 <script src="app/components/host.js"></script>
 <script src="app/commons/loader.js"></script>
 <script src="app/commons/footer.js"></script>
