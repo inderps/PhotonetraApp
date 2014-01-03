@@ -140,7 +140,9 @@ var ContactsCtrl = can.Control.extend({
         ev.preventDefault();
 
         if(this.element.find("form").valid()){
+            Loader.start();
             Contact.create(this.contact.attr(), function(response){
+                Loader.stop();
                 MessageModal.show("New contact created successfully", "#contacts/" + response.id + "/show");
             });
         }
@@ -149,7 +151,9 @@ var ContactsCtrl = can.Control.extend({
     "#update-contact click": function(el, ev){
         ev.preventDefault();
 
+        Loader.start();
         Contact.update(this.contact.attr(), function(response){
+            Loader.stop();
             MessageModal.show("Contact updated successfully", "#contacts/" + response.id + "/show");
         });
     },
@@ -159,7 +163,9 @@ var ContactsCtrl = can.Control.extend({
         var _this = this;
 
         if(this.element.find("form").valid()){
+            Loader.start();
             Contact.create(this.contact.attr(), function(response){
+                Loader.stop();
                 window.location.hash = "#shoots/" + _this.contact.attr().shoot_id + "/assign_contact/" + response.id;
             });
         }

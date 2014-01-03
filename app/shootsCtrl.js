@@ -33,7 +33,9 @@ var ShootsCtrl = can.Control.extend({
                 DateTimePicker.dateInit("#delivery-date");
                 $("#delivery-date").pickadate('picker').set('select', new Date());
                 $("#delivery-modal button.update").click(function(ev){
+                    Loader.start();
                     PendingDelivery.create({id: id, delivered_flag_date: $("#delivery-date").val()}, function(shoot){
+                        Loader.stop();
                         $("#delivery-modal").modal("hide");
                         _this.showShoot(shoot);
                     });
@@ -113,7 +115,9 @@ var ShootsCtrl = can.Control.extend({
         ev.preventDefault();
 
         if(this.element.find("form").valid()){
+            Loader.start();
             Shoot.create(this.shoot.attr(), function(response){
+                Loader.stop();
                 MessageModal.show("New shoot created successfully", "#shoots/" + response.id + "/show");
             });
         }

@@ -74,8 +74,10 @@ var AuthCtrl = can.Control.extend({
 
         if(this.element.find("form").valid()){
             var formData = this.element.find("form").serializeJSON();
-            delete formData["confirm_password"]
+            delete formData["confirm_password"];
+            Loader.start();
             Photographer.create(formData, function(data){
+                Loader.stop();
                 MessageModal.show("Your account is created successfully", "#signup");
             });
         }
@@ -86,7 +88,9 @@ var AuthCtrl = can.Control.extend({
 
         if(this.element.find("form").valid()){
             var formData = this.element.find("form").serializeJSON();
+            Loader.start();
             Photographer.login(formData, function(data){
+                Loader.stop();
                 if(data.id){
                     window.photographerId = data.id;
                     window.token = data.token;

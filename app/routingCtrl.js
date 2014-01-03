@@ -3,15 +3,24 @@ var RoutingCtrl = can.Control.extend({
     },
 
     "route": function(){
+//        Loader.start();
+//        $("#page").html("<div id='calendar-page'></div>")
+//        this.options.calendarCtrl = new CalendarCtrl("#calendar-page");
         Loader.start();
-        $("#page").html("<div id='calendar-page'></div>")
-        this.options.calendarCtrl = new CalendarCtrl("#calendar-page");
+        $("#page").html("<div id='shoots-page'></div>")
+        this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "upcoming"});
     },
 
     "login route": function(){
         Loader.start();
         $("#page").html("<div id='login-page'></div>")
         this.options.authCtrl = new AuthCtrl("#login-page", {page: "login"});
+    },
+
+    "logout route": function(){
+        Loader.start();
+//        $("#page").html("<div id='logout-page'></div>")
+//        this.options.authCtrl = new AuthCtrl("#logout-page", {page: "login"});
     },
 
     "signup route": function(){
