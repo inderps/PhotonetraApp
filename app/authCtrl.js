@@ -9,8 +9,6 @@ var AuthCtrl = can.Control.extend({
     },
 
     login: function(){
-        $("#back").hide();
-        $("#menu").hide();
         $("#titlebar").hide();
         var loginView = can.view("#login-view");
         this.element.html(loginView);
@@ -90,11 +88,11 @@ var AuthCtrl = can.Control.extend({
             var formData = this.element.find("form").serializeJSON();
             Loader.start();
             Photographer.login(formData, function(data){
-                $("#titlebar").show();
                 Loader.stop();
                 $("body").addClass("login-cover")
 
                 if(data.id){
+                    $("#titlebar").show();
                     Authentication.create(data);
                     window.location.hash = "#";
 
