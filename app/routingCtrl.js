@@ -121,6 +121,13 @@ var RoutingCtrl = can.Control.extend({
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },
 
+    "shoots/:id/edit route" : function(data) {
+        Loader.start();
+        $("#back").attr("href", "#shoots/" + data.id + "/show");
+        $("#page").html("<div id='shoot-edit-page'></div>");
+        this.options.shootsCtrl = new ShootsCtrl("#shoot-edit-page", {type: "edit", id: data.id});
+    },
+
     "shoots/:id/pending_delivery  route" : function(data) {
         Loader.start();
         $("#back").attr("href", "#deliveries");

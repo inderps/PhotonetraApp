@@ -9,6 +9,9 @@ var ShootsCtrl = can.Control.extend({
         else if(options.type == "all"){
             this.all(options.filter);
         }
+        else if(options.type == "edit"){
+            this.edit(options.id);
+        }
     },
 
     all: function(filter) {
@@ -57,6 +60,41 @@ var ShootsCtrl = can.Control.extend({
         });
     },
 
+    edit: function(id){
+        var _this = this;
+        Shoot.getOne({id: id}, function(shoot){
+            $(".title").html("<span class='icon-glass'></span> " + shoot.shoot_type);
+            $("#back").show();
+
+
+            _this.shoot = new can.Map({
+                photographer_id: Authentication.getUser().id,
+                event_name: shoot.event_name,
+                shoot_type: shoot.shoot_actuaL_type,
+                shoot_date: "",
+                shoot_time_from: shoot.shoot_time_from,
+                shoot_time_to: shoot.shoot_time_to,
+                location: shoot.location,
+                delivery_date: "",
+                charges: shoot.charges,
+                notes: shoot.notes
+            });
+
+            var shootForm = can.view("#shoot-form-view", _this.shoot);
+            _this.element.html(shootForm);
+            _this.element.find("form").append("<button id='update-shoot' class='btn btn-success btn-lg submit'>Update</button>");
+
+            DateTimePicker.dateInit("#shoot-date");
+            DateTimePicker.dateInit("#delivery-date");
+            DateTimePicker.timeInit("#shoot-time-from");
+            DateTimePicker.timeInit("#shoot-time-to");
+
+            $("#shoot-date").pickadate('picker').set('select', shoot.shoot_unformatted_date);
+            $("#delivery-date").pickadate('picker').set('select', shoot.unformatted_delivery_date);
+            Loader.stop();
+        });
+    },
+
     showShoot: function(shoot){
         $(".title").html("<span class='icon-glass'></span> " + shoot.shoot_type);
         $("#back").show();
@@ -69,7 +107,7 @@ var ShootsCtrl = can.Control.extend({
 
         var shootView = can.view("#shoot-view", {shoot: shoot, show_delivery: show_delivery, contact: shoot.contact});
         this.element.html(shootView);
-        Footer.create(this.element, "#shoot-footer", null);
+        Footer.create(this.element, "#shoot-footer", shoot);
     },
 
     showDelivery: function(shoot){
@@ -170,5 +208,15 @@ var ShootsCtrl = can.Control.extend({
         ev.preventDefault();
         $("#filter-modal").modal("hide");
         window.location.hash = el.attr("href");
-    }
+    },
+
+    "#update-shoot click": function(el, ev){
+        ev.preventDefault();
+
+        Loader.start();
+        Shoot.updateMe(this.shoot.attr(), function(response){
+            Loader.stop();
+            MessageModal.show("Shoot updated successfully", "#shoots/" + response.id + "/show");
+        });
+    },
 });
