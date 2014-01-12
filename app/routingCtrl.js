@@ -76,12 +76,12 @@ var RoutingCtrl = can.Control.extend({
         this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "show", id: data.id});
     },
 
-//    "contacts/:id/edit route" : function(data) {
-//        Loader.start();
-//        $("#back").attr("href", "#contacts/" + data.id + "/show");
-//        $("#page").html("<div id='contact-edit-page'></div>");
-//        this.options.contactsCtrl = new ContactsCtrl("#contact-edit-page", {type: "edit", id: data.id});
-//    },
+    "contacts/:id/edit route" : function(data) {
+        Loader.start();
+        $("#back").attr("href", "#contacts/" + data.id + "/show");
+        $("#page").html("<div id='contact-edit-page'></div>");
+        this.options.contactsCtrl = new ContactsCtrl("#contact-edit-page", {type: "edit", id: data.id});
+    },
 
     "shoots/:id/choose_contact route" : function(data) {
         Loader.start();

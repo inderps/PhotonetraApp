@@ -5,7 +5,7 @@ var host = {
             server = "http://photonetra-api.herokuapp.com/";
         }
         else{
-            server = "http://photonetra-api.herokuapp.com/";
+            server = "http://localhost:9292/";
         }
         return server;
     }

@@ -6,9 +6,9 @@ Contact = CachedModel({
     getAll: function(callback){
         this.baseGetAll("contacts", callback);
     },
-    update:  function(contact, callback){
+    updateMe:  function(contact, callback){
         return $.ajax({
-            url: host.get() + "contacts/" + contact.id + "/",
+            url: host.get() + "contacts/" + contact.id,
             type: 'post',
             data: contact,
             dataType: 'json'

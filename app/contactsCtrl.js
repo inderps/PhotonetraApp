@@ -152,7 +152,7 @@ var ContactsCtrl = can.Control.extend({
         ev.preventDefault();
 
         Loader.start();
-        Contact.update(this.contact.attr(), function(response){
+        Contact.updateMe(this.contact.attr(), function(response){
             Loader.stop();
             MessageModal.show("Contact updated successfully", "#contacts/" + response.id + "/show");
         });
