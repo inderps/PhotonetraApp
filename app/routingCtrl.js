@@ -64,42 +64,36 @@ var RoutingCtrl = can.Control.extend({
 
     "contacts/new route" : function() {
         Loader.start();
-        $("#back").attr("href", "#contacts");
         $("#page").html("<div id='new-contact-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#new-contact-page", {type: "new"});
     },
 
     "contacts/:id/show route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#contacts");
         $("#page").html("<div id='contact-show-page'></div>");
         this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "show", id: data.id});
     },
 
     "contacts/:id/edit route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#contacts/" + data.id + "/show");
         $("#page").html("<div id='contact-edit-page'></div>");
         this.options.contactsCtrl = new ContactsCtrl("#contact-edit-page", {type: "edit", id: data.id});
     },
 
     "shoots/:id/choose_contact route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#shoots/" + data.id + "/show");
         $("#page").html("<div id='choose-contact-page'></div>");
         this.options.contactsCtrl = new ContactsCtrl("#choose-contact-page", {type: "choose", id: data.id});
     },
 
     "shoots/:id/choose_contact_from_list route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#shoots/" + data.id + "/choose_contact");
         $("#page").html("<div id='contacts-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all", ref: "select", id: data.id});
     },
 
     "shoots/:id/assign_contact/:contact_id route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#shoots/upcoming");
         $("#page").html("<div id='shoot-show-page'></div>");
         var _this =this;
         Shoot.assign_contact({shoot_id: data.id, contact_id: data.contact_id}, function(response){
@@ -109,42 +103,36 @@ var RoutingCtrl = can.Control.extend({
 
     "shoots/new route" : function() {
         Loader.start();
-        $("#back").attr("href", "#shoots/upcoming");
         $("#page").html("<div id='new-shoot-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#new-shoot-page", {type: "new"});
     },
 
     "shoots/:id/show  route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#shoots/upcoming");
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },
 
     "shoots/:id/edit route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#shoots/" + data.id + "/show");
         $("#page").html("<div id='shoot-edit-page'></div>");
         this.options.shootsCtrl = new ShootsCtrl("#shoot-edit-page", {type: "edit", id: data.id});
     },
 
     "shoots/:id/pending_delivery  route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#deliveries");
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },
 
     "shoots/:id/payments/new  route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#shoots/" + data.id + "/show");
         $("#page").html("<div id='payment-new-page'></div>")
         this.options.paymentsCtrl = new PaymentsCtrl("#payment-new-page", {type: "new", id: data.id});
     },
 
     "shoots/:id/payment  route" : function(data) {
         Loader.start();
-        $("#back").attr("href", "#payments");
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },

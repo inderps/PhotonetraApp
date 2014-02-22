@@ -11,5 +11,9 @@ var Photonetra = can.Construct.extend({
         $('#menu').sidr({name: 'main-menu', source: '#menu-list', side: 'right'});
         $('#titlebar').scrollNav({"bootstrap_mobile": true})
         new RoutingCtrl("body");
+        $("#back").click(function(ev){
+            ev.preventDefault();
+            window.history.back();
+        });
     }
 });
