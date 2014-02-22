@@ -7,15 +7,24 @@ var RoutingCtrl = can.Control.extend({
 //        $("#page").html("<div id='calendar-page'></div>")
 //        this.options.calendarCtrl = new CalendarCtrl("#calendar-page");
         Loader.start();
-        $("#page").html("<div id='shoots-page'></div>")
-        this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "upcoming"});
+        if(Authentication.isLoggedIn()){
+            window.location.hash = "#!shoots/upcoming";
+        }
+        else{
+            window.location.hash = "#!login";
+        }
     },
 
     "login route": function(){
         Loader.start();
-        $("body").addClass("login-cover")
-        $("#page").html("<div id='login-page'></div>")
-        this.options.authCtrl = new AuthCtrl("#login-page", {page: "login"});
+        if(Authentication.isLoggedIn()){
+            window.location.hash = "#!shoots/upcoming";
+        }
+        else{
+            $("body").addClass("login-cover")
+            $("#page").html("<div id='login-page'></div>")
+            this.options.authCtrl = new AuthCtrl("#login-page", {page: "login"});
+        }
     },
 
     "logout route": function(){

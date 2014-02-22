@@ -18,5 +18,13 @@ var Authentication = {
 
     clear: function(){
         store.remove('photonetra_user');
+    },
+
+    isLoggedIn: function(){
+        if(store.get("photonetra_user")){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

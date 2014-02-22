@@ -7,6 +7,7 @@ var Validate = (function() {
                 $(element).closest('.form-group').addClass('has-error');
             },
             success: function (element) {
+                element.closest('.form-group').find(".error").remove();
                 element.closest('.form-group').removeClass('has-error');
             }
         });
