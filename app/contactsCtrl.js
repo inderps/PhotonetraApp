@@ -143,7 +143,7 @@ var ContactsCtrl = can.Control.extend({
             Loader.start();
             Contact.create(this.contact.attr(), function(response){
                 Loader.stop();
-                MessageModal.show("New contact created successfully", "#contacts/" + response.id + "/show");
+                MessageModal.show("New contact created successfully", "#!contacts/" + response.id + "/show");
             });
         }
     },
@@ -154,7 +154,7 @@ var ContactsCtrl = can.Control.extend({
         Loader.start();
         Contact.updateMe(this.contact.attr(), function(response){
             Loader.stop();
-            MessageModal.show("Contact updated successfully", "#contacts/" + response.id + "/show");
+            MessageModal.show("Contact updated successfully", "#!contacts/" + response.id + "/show");
         });
     },
 

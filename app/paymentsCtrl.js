@@ -61,7 +61,7 @@ var PaymentsCtrl = can.Control.extend({
             Loader.start();
             Payment.create(this.payment.attr(), function(response){
                 Loader.stop();
-                MessageModal.show("New transaction added successfully", "#shoots/" + response.shoot_id + "/show");
+                MessageModal.show("New transaction added successfully", "#!shoots/" + response.shoot_id + "/show");
             });
         }
     },

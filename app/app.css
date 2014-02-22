@@ -145,6 +145,13 @@ label.error{
     top: 65%;
     right: 0;
     left: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.new-user{
+    text-align: center;
+    margin-top: 20px;
+    color: #5bc0de;
 }
 
 /*button, input, select, textarea {*/

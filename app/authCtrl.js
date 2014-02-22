@@ -46,7 +46,7 @@ var AuthCtrl = can.Control.extend({
                 email: true
             },
             website: {
-                url: true
+                required: false
             },
             password: {
                 required: true,
@@ -76,7 +76,7 @@ var AuthCtrl = can.Control.extend({
             Loader.start();
             Photographer.create(formData, function(data){
                 Loader.stop();
-                MessageModal.show("Your account is created successfully", "#signup");
+                MessageModal.show("Your account is created successfully", "#!login");
             });
         }
     },

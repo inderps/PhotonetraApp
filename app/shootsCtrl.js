@@ -168,7 +168,7 @@ var ShootsCtrl = can.Control.extend({
             Loader.start();
             Shoot.create(this.shoot.attr(), function(response){
                 Loader.stop();
-                MessageModal.show("New shoot created successfully", "#shoots/" + response.id + "/show");
+                MessageModal.show("New shoot created successfully", "#!shoots/" + response.id + "/show");
             });
         }
     },
@@ -216,7 +216,7 @@ var ShootsCtrl = can.Control.extend({
         Loader.start();
         Shoot.updateMe(this.shoot.attr(), function(response){
             Loader.stop();
-            MessageModal.show("Shoot updated successfully", "#shoots/" + response.id + "/show");
+            MessageModal.show("Shoot updated successfully", "#!shoots/" + response.id + "/show");
         });
     },
 });

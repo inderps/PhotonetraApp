@@ -37,6 +37,7 @@ var RoutingCtrl = can.Control.extend({
 
     "signup route": function(){
         Loader.start();
+        $("#titlebar").show();
         $("#page").html("<div id='signup-page'></div>")
         this.options.authCtrl = new AuthCtrl("#signup-page", {page: "signup"});
     },
