@@ -166,7 +166,7 @@ var ContactsCtrl = can.Control.extend({
             Loader.start();
             Contact.create(this.contact.attr(), function(response){
                 Loader.stop();
-                window.location.hash = "#shoots/" + _this.contact.attr().shoot_id + "/assign_contact/" + response.id;
+                window.location.hash = "#!shoots/" + _this.contact.attr().shoot_id + "/assign_contact/" + response.id;
             });
         }
     },

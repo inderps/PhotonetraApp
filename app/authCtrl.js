@@ -94,7 +94,7 @@ var AuthCtrl = can.Control.extend({
                 if(data.id){
                     $("#titlebar").show();
                     Authentication.create(data);
-                    window.location.hash = "#";
+                    window.location.hash = "#!";
 
                 }else{
                     alert("Incorrect Email/Password");

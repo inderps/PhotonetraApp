@@ -21,7 +21,7 @@
 <body>
 <nav class="navbar navbar-default" role="navigation" id="titlebar">
     <span class="title">Shoots</span>
-    <a href="#" id="back" class="btn btn-default navbar-btn"><span class="icon-left"></span></a>
+    <a href="#!" id="back" class="btn btn-default navbar-btn"><span class="icon-left"></span></a>
     <a id="menu" href="#menu-list"></a>
     <!--<div class="input-group">-->
       <!--<span class="input-group-btn">-->
@@ -37,11 +37,11 @@
 
 <div id="menu-list" style="display: none;">
     <ul>
-        <li><a href="#shoots/upcoming">Shoots</a></li>
-        <li><a href="#contacts">Contacts</a></li>
-        <li><a href="#deliveries">Deliveries</a></li>
-        <li><a href="#payments">Payments</a></li>
-        <li><a href="#logout">Logout</a></li>
+        <li><a href="#!shoots/upcoming">Shoots</a></li>
+        <li><a href="#!contacts">Contacts</a></li>
+        <li><a href="#!deliveries">Deliveries</a></li>
+        <li><a href="#!payments">Payments</a></li>
+        <li><a href="#!logout">Logout</a></li>
     </ul>
 </div>
 
@@ -63,7 +63,7 @@
 <script id="shoots-view"  type="text/mustache">
     <ul class="list-group shoots">
         {{#shoots}}
-        <li class="list-group-item" data-href="#shoots/{{id}}/show">
+        <li class="list-group-item" data-href="#!shoots/{{id}}/show">
             <p class="text-left">
             <h3 class="text-main">{{shoot_date}}</h3>
             <h5><span class="icon-clock"></span>{{shoot_time_from}} to {{shoot_time_to}}</h5>
@@ -78,7 +78,7 @@
 <script id="delivery-view"  type="text/mustache">
     <ul class="list-group shoots">
         {{#shoots}}
-        <li class="list-group-item" data-href="#shoots/{{id}}/pending_delivery">
+        <li class="list-group-item" data-href="#!shoots/{{id}}/pending_delivery">
             <p class="text-left">
             <h3 class="text-danger"><span class="icon-bell-alt"></span> {{delivery_date}}</h3>
             <h5>{{event_name}}</h5>
@@ -93,7 +93,7 @@
 <script id="payments-view"  type="text/mustache">
     <ul class="list-group shoots">
         {{#shoots}}
-        <li class="list-group-item" data-href="#shoots/{{id}}/payment">
+        <li class="list-group-item" data-href="#!shoots/{{id}}/payment">
             <p class="text-left">
             <h3 class="text-success"><span class="icon-dollar"></span> {{amount_due}}</h3>
             <h5>{{event_name}}</h5>
@@ -108,8 +108,8 @@
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
             <div class="btn-group btn-group-justified">
-                <a href="#shoots/new" class="btn btn-default"><span class="icon-plus"></span></a>
-                <a href="#" class="btn btn-default filter-shoots"><span class="icon-filter"></span></a>
+                <a href="#!shoots/new" class="btn btn-default"><span class="icon-plus"></span></a>
+                <a href="#!" class="btn btn-default filter-shoots"><span class="icon-filter"></span></a>
             </div>
         </div>
     </nav>
@@ -118,7 +118,7 @@
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
             <div class="btn-group btn-group-justified">
-                <a href="#contacts/new" class="btn btn-default"><span class="icon-plus"></span></a>
+                <a href="#!contacts/new" class="btn btn-default"><span class="icon-plus"></span></a>
             </div>
         </div>
     </nav>
@@ -128,13 +128,13 @@
     <ul class="list-group contacts">
         {{#contacts}}
         {{#shoot_id}}
-        <li class="list-group-item" data-href="#shoots/{{.}}/assign_contact/{{id}}">
+        <li class="list-group-item" data-href="#!shoots/{{.}}/assign_contact/{{id}}">
             <h5 class="text-main"><span class="icon-user"></span> {{name}}</h5>
             <small><span class="icon-phone"></span> {{phone}}</small>
         </li>
         {{/shoot_id}}
         {{^shoot_id}}
-        <li class="list-group-item" data-href="#contacts/{{id}}/show">
+        <li class="list-group-item" data-href="#!contacts/{{id}}/show">
             <h5 class="text-main"><span class="icon-user"></span> {{name}}</h5>
             <small><span class="icon-phone"></span> {{phone}}</small>
         </li>
@@ -145,7 +145,7 @@
 
 <script id="select-contact-view"  type="text/mustache">
     <div class="form-group">
-        <button type="submit" id="choose-existing" data-href="#shoots/{{shoot_id}}/choose_contact_from_list" class="btn btn-info input-lg"><span class="icon-user"></span> Choose Existing</button>
+        <button type="submit" id="choose-existing" data-href="#!shoots/{{shoot_id}}/choose_contact_from_list" class="btn btn-info input-lg"><span class="icon-user"></span> Choose Existing</button>
     </div>
     <div class="form-group">
         <h3 class="or">Or</h3>
@@ -254,7 +254,7 @@
                 <tr>
                     <td>{{shoot_date}}</td>
                     <td>{{event_name}}</td>
-                    <td><a href="#shoots/{{id}}/show" class="btn btn-default"><span class='icon-pencil'></span></a></td>
+                    <td><a href="#!shoots/{{id}}/show" class="btn btn-default"><span class='icon-pencil'></span></a></td>
                 </tr>
                 {{/shoots}}
                 {{^shoots}}
@@ -274,7 +274,7 @@
     <nav class="navbar navbar-fixed-bottom footer" role="navigation">
         <div class="navbar-header text-center bottom-nav">
             <div class="btn-group btn-group-justified">
-                <a href="#contacts/{{id}}/edit" class="btn btn-default"><span class='icon-pencil'></span> Edit</a>
+                <a href="#!contacts/{{id}}/edit" class="btn btn-default"><span class='icon-pencil'></span> Edit</a>
             </div>
         </div>
     </nav>
@@ -303,7 +303,7 @@
     </div>
     {{/contact}}
     {{^contact}}
-    <button id="add-contact" data-href="#shoots/{{shoot.id}}/choose_contact" class='btn btn-info btn-lg'><span class="icon-user"></span>  Add a Contact</button>
+    <button id="add-contact" data-href="#!shoots/{{shoot.id}}/choose_contact" class='btn btn-info btn-lg'><span class="icon-user"></span>  Add a Contact</button>
     {{/contact}}
     <div class="panel panel-warning">
         <div class="panel-heading">
@@ -338,7 +338,7 @@
             <h3 class="panel-title pull-left">
             <span class="icon-dollar"></span>Payments
             </h3>
-            <button class="btn btn-success pull-right add-payment" data-href="#shoots/{{shoot.id}}/payments/new"><span class="icon-plus"></span></button>
+            <button class="btn btn-success pull-right add-payment" data-href="#!shoots/{{shoot.id}}/payments/new"><span class="icon-plus"></span></button>
         </div>
         <div class="panel-body">
             <table class="table table-striped">
@@ -373,7 +373,7 @@
 <!--<nav class="navbar navbar-fixed-bottom footer" role="navigation">-->
     <!--<div class="navbar-header text-center bottom-nav">-->
         <!--<div class="btn-group btn-group-justified">-->
-            <!--<a href="#shoots/{{id}}/edit" class="btn btn-default"><span class="icon-pencil"></span> Edit</a>-->
+            <!--<a href="#!shoots/{{id}}/edit" class="btn btn-default"><span class="icon-pencil"></span> Edit</a>-->
         <!--</div>-->
     <!--</div>-->
 <!--</nav>-->
