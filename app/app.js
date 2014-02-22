@@ -1,9 +1,3 @@
-$(function(){
-    new Photonetra();
-    can.route.ready();
-
-});
-
 var Photonetra = can.Construct.extend({
     init: function() {
         window.photographerId = 1;
