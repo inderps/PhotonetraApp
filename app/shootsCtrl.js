@@ -1,5 +1,6 @@
 var ShootsCtrl = can.Control.extend({
-    init: function( element, options ) {
+  init: function( element, options ) {
+        $("#menu").show();
         if(options.type == "new"){
             this.new();
         }
