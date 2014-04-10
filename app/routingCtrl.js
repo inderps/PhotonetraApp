@@ -1,5 +1,6 @@
 var RoutingCtrl = can.Control.extend({
     init: function( element, options ) {
+      this.navCtrl = new NavCtrl("body");
     },
 
     "route": function(){
@@ -11,7 +12,7 @@ var RoutingCtrl = can.Control.extend({
             window.location.hash = "#!shoots/upcoming";
         }
         else{
-            window.location.hash = "#!login";
+          window.location.hash = "#!login";
         }
     },
 
@@ -21,6 +22,7 @@ var RoutingCtrl = can.Control.extend({
             window.location.hash = "#!shoots/upcoming";
         }
         else{
+            this.navCtrl.disableSlidr();
             $("body").addClass("login-cover")
             $("#page").html("<div id='login-page'></div>")
             this.options.authCtrl = new AuthCtrl("#login-page", {page: "login"});
@@ -36,6 +38,7 @@ var RoutingCtrl = can.Control.extend({
     },
 
     "signup route": function(){
+        this.navCtrl.enableSlidr();
         Loader.start();
         $("#titlebar").show();
         $("#page").html("<div id='signup-page'></div>")
@@ -43,66 +46,77 @@ var RoutingCtrl = can.Control.extend({
     },
 
     "shoots/upcoming route" : function() {
+        this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='shoots-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "upcoming"});
     },
 
     "shoots/all route" : function() {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='shoots-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoots-page", {type: "all", filter: "all"});
     },
 
     "contacts route" : function() {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='contacts-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all"});
     },
 
     "deliveries route" : function() {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='delivery-page'></div>")
         this.options.deliveryCtrl = new DeliveryCtrl("#delivery-page");
     },
 
     "payments route" : function() {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='payments-page'></div>")
         this.options.paymentsCtrl = new PaymentsCtrl("#payments-page", {type: "all"});
     },
 
     "contacts/new route" : function() {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='new-contact-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#new-contact-page", {type: "new"});
     },
 
     "contacts/:id/show route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='contact-show-page'></div>");
         this.options.contactsCtrl = new ContactsCtrl("#contact-show-page", {type: "show", id: data.id});
     },
 
     "contacts/:id/edit route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='contact-edit-page'></div>");
         this.options.contactsCtrl = new ContactsCtrl("#contact-edit-page", {type: "edit", id: data.id});
     },
 
     "shoots/:id/choose_contact route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='choose-contact-page'></div>");
         this.options.contactsCtrl = new ContactsCtrl("#choose-contact-page", {type: "choose", id: data.id});
     },
 
     "shoots/:id/choose_contact_from_list route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='contacts-page'></div>")
         this.options.contactsCtrl = new ContactsCtrl("#contacts-page", {type: "all", ref: "select", id: data.id});
     },
 
     "shoots/:id/assign_contact/:contact_id route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='shoot-show-page'></div>");
         var _this =this;
@@ -112,38 +126,44 @@ var RoutingCtrl = can.Control.extend({
     },
 
     "shoots/new route" : function() {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='new-shoot-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#new-shoot-page", {type: "new"});
     },
 
     "shoots/:id/show  route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },
 
     "shoots/:id/edit route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='shoot-edit-page'></div>");
         this.options.shootsCtrl = new ShootsCtrl("#shoot-edit-page", {type: "edit", id: data.id});
     },
 
     "shoots/:id/pending_delivery  route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
     },
 
     "shoots/:id/payments/new  route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='payment-new-page'></div>")
         this.options.paymentsCtrl = new PaymentsCtrl("#payment-new-page", {type: "new", id: data.id});
     },
 
     "shoots/:id/payment  route" : function(data) {
+      this.navCtrl.enableSlidr();
         Loader.start();
         $("#page").html("<div id='shoot-show-page'></div>")
         this.options.shootsCtrl = new ShootsCtrl("#shoot-show-page", {type: "show", id: data.id});
-    },
+    }
 });
