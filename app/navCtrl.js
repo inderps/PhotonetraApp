@@ -7,7 +7,11 @@ var NavCtrl = can.Control.extend({
     },
 
     '#open-left click': function(ev){
-      this.snapper.open('right');
+      if(this.snapper.state().state=="right" ){
+        this.snapper.close();
+      } else {
+        this.snapper.open('right');
+      }
     },
 
     '.snap-drawer-right li click': function(el, ev){
