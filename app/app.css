@@ -159,7 +159,7 @@ label.error{
   background-color: #000000;
 }
 
-.login-cover .snap-drawer-right{
+.login-cover .snap-drawer-right, .no-pointer-events .snap-drawer-right{
   display: none;
 }
 .login-cover #page{

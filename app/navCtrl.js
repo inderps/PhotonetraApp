@@ -11,7 +11,7 @@ var NavCtrl = can.Control.extend({
     },
 
     '.snap-drawer-right li click': function(el, ev){
-      window.location.hash = $(el).data('href');
       this.snapper.close('right');
+      window.location.hash = $(el).data('href');
     }
 });
