@@ -94,7 +94,8 @@ var AuthCtrl = can.Control.extend({
                 if(data.id){
                     $("#titlebar").show();
                     Authentication.create(data);
-                    window.location.hash = "#!shoots/upcoming";
+                    new NavCtrl("body");
+                     window.location.hash = "#!shoots/upcoming";
 
                 }else{
                     alert("Incorrect Email/Password");

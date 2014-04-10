@@ -159,6 +159,13 @@ label.error{
   background-color: #000000;
 }
 
+.login-cover .snap-drawer-right{
+  display: none;
+}
+.login-cover #page{
+  background: transparent;
+}
+
 
 /*button, input, select, textarea {*/
     /*height: 45px;*/
