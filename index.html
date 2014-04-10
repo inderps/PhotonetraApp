@@ -9,7 +9,7 @@
 <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link href="lib/sidr/jquery.sidr.dark.css" rel="stylesheet">
+<link href="lib/snap/snap.css" rel="stylesheet">
 <link href="lib/font/css/fontello.css" rel="stylesheet">
 <link href="lib/pickadate/default.css" rel="stylesheet">
 <link href="lib/pickadate/default.date.css" rel="stylesheet">
@@ -19,30 +19,47 @@
 <link href="app/app.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation" id="titlebar">
-    <span class="title">Shoots</span>
-    <a href="#" id="back" class="btn btn-default navbar-btn"><span class="icon-left"></span></a>
-    <a id="menu" href="#menu-list"></a>
-    <!--<div class="input-group">-->
-      <!--<span class="input-group-btn">-->
-        <!--<button class="btn btn-default btn-lg" type="button"><span class="icon-left"></span></button>-->
-      <!--</span>-->
-      <!--<input type="text" class="form-control input-lg" placeholder="Search">-->
-    <!--</div>-->
-</nav>
-
-
-<div id="page">
+<div class="snap-drawers">
+    <div class="snap-drawer snap-drawer-right">
+        <ul class="list-group">
+            <li class="list-group-item" data-href="#!shoots/upcoming">Shoots</li>
+            <li class="list-group-item" data-href="#!contacts">Contacts</li>
+            <li class="list-group-item" data-href="#!deliveries">Deliveries</li>
+            <li class="list-group-item" data-href="#!payments">Payments</li>
+            <li class="list-group-item" data-href="#!logout">Logout</li>
+        </ul>
+    </div>
 </div>
 
-<div id="menu-list" style="display: none;">
-    <ul>
-        <li><a href="#!shoots/upcoming">Shoots</a></li>
-        <li><a href="#!contacts">Contacts</a></li>
-        <li><a href="#!deliveries">Deliveries</a></li>
-        <li><a href="#!payments">Payments</a></li>
-        <li><a href="#!logout">Logout</a></li>
-    </ul>
+<div id="content" class="snap-content">
+    <nav class="navbar navbar-default" role="navigation" id="titlebar">
+        <span class="title">Shoots</span>
+        <a href="#" id="back" class="btn btn-default navbar-btn"><span class="icon-left"></span></a>
+        <button id="open-left"class="menu-link"></button>
+        <!--<a id="open-left" href="#" class="menu-link"></a>-->
+
+        <!--<nav id="menu" class="panel" role="navigation">-->
+        <!--<ul>-->
+        <!--<li><a href="#!shoots/upcoming">Shoots</a></li>-->
+        <!--<li><a href="#!contacts">Contacts</a></li>-->
+        <!--<li><a href="#!deliveries">Deliveries</a></li>-->
+        <!--<li><a href="#!payments">Payments</a></li>-->
+        <!--<li><a href="#!logout">Logout</a></li>-->
+        <!--</ul>-->
+        <!--</nav>-->
+        <!--<div class="input-group">-->
+        <!--<span class="input-group-btn">-->
+        <!--<button class="btn btn-default btn-lg" type="button"><span class="icon-left"></span></button>-->
+        <!--</span>-->
+        <!--<input type="text" class="form-control input-lg" placeholder="Search">-->
+        <!--</div>-->
+    </nav>
+    <!--<div id="toolbar">-->
+        <!--<a href="#" id="open-left"></a>-->
+        <!--<h1>Default</h1>-->
+    <!--</div>-->
+    <div id="page">
+    </div>
 </div>
 
 <script id="login-view"  type="text/mustache">
@@ -513,7 +530,7 @@
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/jquery/jquery.validate.min.js"></script>
 <script src="lib/canjs/can.jquery.min.js"></script>
-<script src="lib/sidr/jquery.sidr.min.js"></script>
+<script src="lib/snap/snap.js"></script>
 <script src="lib/jquery.scrollnav.js"></script>
 <script src="lib/pickadate/picker.js"></script>
 <script src="lib/pickadate/picker.date.js"></script>
@@ -533,6 +550,7 @@
 <script src="app/models/shoot.js"></script>
 <script src="app/models/pending_delivery.js"></script>
 <script src="app/models/payment.js"></script>
+<script src="app/navCtrl.js"></script>
 <script src="app/authCtrl.js"></script>
 <script src="app/contactsCtrl.js"></script>
 <script src="app/shootsCtrl.js"></script>
@@ -547,6 +565,7 @@
         can.route.ready();
     }
     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+        onDeviceReady();
         document.addEventListener("deviceready", onDeviceReady, false);
     } else {
         onDeviceReady();

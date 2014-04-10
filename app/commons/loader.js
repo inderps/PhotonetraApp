@@ -1,7 +1,7 @@
 var Loader = (function() {
 
     var start = function() {
-        $.sidr('close', 'main-menu');
+//        $.sidr('close', 'main-menu');
         if($("body").hasClass("login-cover")){
             $("body").removeClass("login-cover");
         }

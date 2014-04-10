@@ -47,7 +47,7 @@
     margin-top: 20px;
 }
 
-#menu{
+.menu-link{
     background: url("../img/open.png") center center no-repeat;
     display: block;
     width: 50px;
@@ -68,6 +68,7 @@
     padding: 10px;
     position: relative;
     top: 50px;
+    background-color: #272b30;
 }
 
 button {
@@ -153,6 +154,11 @@ label.error{
     margin-top: 20px;
     color: #5bc0de;
 }
+
+.snap-drawer-right ul li:hover{
+  background-color: #000000;
+}
+
 
 /*button, input, select, textarea {*/
     /*height: 45px;*/
